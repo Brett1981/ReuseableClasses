@@ -121,6 +121,7 @@
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +245,7 @@
     <Compile Include="Threading\InvokeImageLoad.cs" />
     <Compile Include="Threading\MyThread.cs" />
     <Compile Include="Threading\ThreadPooling.cs" />
+    <Compile Include="Validators\XmlValidator.cs" />
     <Compile Include="WebConfig_Helpers\ConfigurationHelpers.cs" />
     <Compile Include="Windows\GetIP.cs" />
     <Compile Include="Windows\Mstsc\DataProtectionForRDPWrapper.cs" />
