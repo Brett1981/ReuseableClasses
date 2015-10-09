@@ -234,6 +234,7 @@
     <Compile Include="SQL\BuilderUpdateClass.cs" />
     <Compile Include="SQL\Connection.cs" />
     <Compile Include="SQL\DataAccess.cs" />
+    <Compile Include="SQL\CheckInputDataRow.cs" />
     <Compile Include="SQL\ForeignKeyContainer.cs" />
     <Compile Include="SQL\FunctionHelper.cs" />
     <Compile Include="SQL\GetDatabases.cs" />
