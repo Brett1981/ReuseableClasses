@@ -189,6 +189,7 @@
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions\DateTimeYesterday.cs" />
+    <Compile Include="Functions\FormatDataString.cs" />
     <Compile Include="Functions\IsImageFile.cs" />
     <Compile Include="Functions\TextFunctions.cs" />
     <Compile Include="Functions\TimeDateChecker.cs" />
