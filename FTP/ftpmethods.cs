@@ -56,7 +56,7 @@ namespace Re_useable_Classes.FTP
         private int _bufferSize = 2048;
         
         /* Construct Object */
-        public Ftpmethods(string hostIp, string userName, string password) { _host = hostIp; _user = userName; _pass = password; }
+        public Ftpmethods(string hostIp, string userName, string password) { _host = "ftp://" + hostIp; _user = userName; _pass = password; }
 
         /* Download File */
         public void Download(string remoteFile, string localFile)
@@ -78,7 +78,7 @@ namespace Re_useable_Classes.FTP
                 /* Get the FTP Server's Response Stream */
                 _ftpStream = _ftpResponse.GetResponseStream();
                 /* Open a File Stream to Write the Downloaded File */
-                var localFileStream = new FileStream(localFile, FileMode.Create);
+                var localFileStream = File.OpenRead(localFile);
                 /* Buffer for the Downloaded Data */
                 var byteBuffer = new byte[_bufferSize];
                 if (_ftpStream != null)
@@ -167,7 +167,7 @@ namespace Re_useable_Classes.FTP
                 /* Establish Return Communication with the FTP Server */
                 _ftpStream = _ftpRequest.GetRequestStream();
                 /* Open a File Stream to Read the File for Upload */
-                var localFileStream = new FileStream(localFile, FileMode.Create);
+                var localFileStream = File.OpenRead(localFile);
                 /* Buffer for the Downloaded Data */
                 var byteBuffer = new byte[_bufferSize];
                 var bytesSent = localFileStream.Read(byteBuffer, 0, _bufferSize);
