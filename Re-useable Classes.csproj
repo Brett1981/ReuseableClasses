@@ -188,6 +188,7 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTP\ftpmethods.cs" />
     <Compile Include="Functions\DateTimeYesterday.cs" />
     <Compile Include="Functions\FormatDataString.cs" />
     <Compile Include="Functions\IsImageFile.cs" />
@@ -361,6 +362,7 @@
   <ItemGroup>
     <None Include="Resources\Glomb.gif" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
