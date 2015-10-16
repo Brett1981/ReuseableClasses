@@ -167,6 +167,7 @@
     <Compile Include="Converters\WebsiteToHTML.cs" />
     <Compile Include="Converters\WebsiteToImage.cs" />
     <Compile Include="Converters\WordtoPDF.cs" />
+    <Compile Include="Converters\XmlParser.cs" />
     <Compile Include="Emailing\EmailHelper.cs" />
     <Compile Include="Emailing\SystemHelper.cs" />
     <Compile Include="Encryption\CryptoHelper.cs" />
