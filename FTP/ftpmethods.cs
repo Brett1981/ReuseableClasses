@@ -49,6 +49,7 @@ namespace Re_useable_Classes.FTP
         /// </summary>
         private readonly string _host;
         private readonly string _user;
+        private readonly string _domain = "";
         private readonly string _pass;
         private FtpWebRequest _ftpRequest;
         private FtpWebResponse _ftpResponse;
@@ -245,9 +246,10 @@ namespace Re_useable_Classes.FTP
             try
             {
                 /* Create an FTP Request */
-                _ftpRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri (_host + "/" + newDirectory));
+                _ftpRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri(_host + "/" + newDirectory));
                 /* Log in to the FTP Server with the User Name and Password Provided */
-                _ftpRequest.Credentials = new NetworkCredential(_user, _pass);
+                _ftpRequest.Credentials = new NetworkCredential(
+                                            _user.Normalize(), _pass.Normalize(), _domain.Normalize());
                 /* When in doubt, use these options */
                 _ftpRequest.UseBinary = true;
                 _ftpRequest.UsePassive = true;
@@ -261,6 +263,7 @@ namespace Re_useable_Classes.FTP
                 _ftpRequest = null;
             }
             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+
         }
 
         /* Get the Date/Time a File was Created */
