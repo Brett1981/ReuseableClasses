@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Windows.Forms;
 
 namespace Re_useable_Classes.FTP
 {
@@ -102,7 +103,52 @@ namespace Re_useable_Classes.FTP
             }
             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
         }
-
+        /* Get the Size of a File */
+        public string GetFileSize(string fileName)
+        {
+            try
+            {
+                /* Create an FTP Request */
+                _ftpRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + fileName);
+                /* Log in to the FTP Server with the User Name and Password Provided */
+                _ftpRequest.Credentials = new NetworkCredential(_user, _pass);
+                /* When in doubt, use these options */
+                _ftpRequest.UseBinary = true;
+                _ftpRequest.UsePassive = true;
+                _ftpRequest.KeepAlive = true;
+                /* Specify the Type of FTP Request */
+                _ftpRequest.Method = WebRequestMethods.Ftp.GetFileSize;
+                /* Establish Return Communication with the FTP Server */
+                _ftpResponse = (FtpWebResponse)_ftpRequest.GetResponse();
+                /* Establish Return Communication with the FTP Server */
+                var fileInfo = _ftpResponse.ContentLength;
+                /* Resource Cleanup */
+                
+                _ftpStream.Close();
+                _ftpResponse.Close();
+                _ftpRequest = null;
+                /* Get and return file size */
+                double bytes = fileInfo;
+                const string format = "#,0.0";
+ 
+                if (bytes < 1024)
+                    return bytes.ToString("#,0");
+                bytes /= 1024;
+                if (bytes < 1024)
+                    return bytes.ToString(format) + " KB";
+                bytes /= 1024;
+                if (bytes < 1024)
+                    return bytes.ToString(format) + " MB";
+                bytes /= 1024;
+                if (bytes < 1024)
+                    return bytes.ToString(format) + " GB";
+                bytes /= 1024;
+                return bytes.ToString(format) + " TB";
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString(), "error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            /* Return an Empty string Array if an Exception Occurs */
+            return "";
+        }
         /* Upload File */
         public void Upload(string remoteFile, string localFile)
         {
@@ -199,7 +245,7 @@ namespace Re_useable_Classes.FTP
             try
             {
                 /* Create an FTP Request */
-                _ftpRequest = (FtpWebRequest)WebRequest.Create(_host + "/" + newDirectory);
+                _ftpRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + newDirectory);
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 _ftpRequest.Credentials = new NetworkCredential(_user, _pass);
                 /* When in doubt, use these options */
@@ -259,47 +305,6 @@ namespace Re_useable_Classes.FTP
             return "";
         }
 
-        /* Get the Size of a File */
-        public string GetFileSize(string fileName)
-        {
-            try
-            {
-                /* Create an FTP Request */
-                _ftpRequest = (FtpWebRequest)WebRequest.Create(_host + "/" + fileName);
-                /* Log in to the FTP Server with the User Name and Password Provided */
-                _ftpRequest.Credentials = new NetworkCredential(_user, _pass);
-                /* When in doubt, use these options */
-                _ftpRequest.UseBinary = true;
-                _ftpRequest.UsePassive = true;
-                _ftpRequest.KeepAlive = true;
-                /* Specify the Type of FTP Request */
-                _ftpRequest.Method = WebRequestMethods.Ftp.GetFileSize;
-                /* Establish Return Communication with the FTP Server */
-                _ftpResponse = (FtpWebResponse)_ftpRequest.GetResponse();
-                /* Establish Return Communication with the FTP Server */
-                _ftpStream = _ftpResponse.GetResponseStream();
-                /* Get the FTP Server's Response Stream */
-                if (_ftpStream != null)
-                {
-                    var ftpReader = new StreamReader(_ftpStream);
-                    /* Store the Raw Response */
-                    string fileInfo = null;
-                    /* Read the Full Response Stream */
-                    try { while (ftpReader.Peek() != -1) { fileInfo = ftpReader.ReadToEnd(); } }
-                    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-                    /* Resource Cleanup */
-                    ftpReader.Close();
-                    _ftpStream.Close();
-                    _ftpResponse.Close();
-                    _ftpRequest = null;
-                    /* Return File Size */
-                    return fileInfo;
-                }
-            }
-            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-            /* Return an Empty string Array if an Exception Occurs */
-            return "";
-        }
 
         /* List Directory Contents File/Folder Name Only */
         public string[] DirectoryListSimple(string directory)
