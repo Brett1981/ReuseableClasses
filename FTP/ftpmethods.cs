@@ -245,7 +245,7 @@ namespace Re_useable_Classes.FTP
             try
             {
                 /* Create an FTP Request */
-                _ftpRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + newDirectory);
+                _ftpRequest = (FtpWebRequest)FtpWebRequest.Create(new Uri (_host + "/" + newDirectory));
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 _ftpRequest.Credentials = new NetworkCredential(_user, _pass);
                 /* When in doubt, use these options */
