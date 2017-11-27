@@ -40,7 +40,7 @@
             this.chkWinAuth = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lblWindowsAuth = new Infragistics.Win.Misc.UltraLabel();
             this.btnLogin = new Infragistics.Win.Misc.UltraButton();
-            this.lblDevelopedby = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.cmbServer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDataBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername)).BeginInit();
@@ -50,75 +50,67 @@
             // 
             // cmbServer
             // 
-            this.cmbServer.Location = new System.Drawing.Point(189, 21);
-            this.cmbServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbServer.Location = new System.Drawing.Point(252, 26);
             this.cmbServer.Name = "cmbServer";
-            this.cmbServer.Size = new System.Drawing.Size(231, 21);
+            this.cmbServer.Size = new System.Drawing.Size(308, 24);
             this.cmbServer.TabIndex = 0;
             this.cmbServer.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cmbServer_BeforeDropDown);
             // 
             // cmbDataBase
             // 
-            this.cmbDataBase.Location = new System.Drawing.Point(189, 92);
-            this.cmbDataBase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbDataBase.Location = new System.Drawing.Point(252, 113);
             this.cmbDataBase.Name = "cmbDataBase";
-            this.cmbDataBase.Size = new System.Drawing.Size(231, 21);
+            this.cmbDataBase.Size = new System.Drawing.Size(308, 24);
             this.cmbDataBase.TabIndex = 1;
             this.cmbDataBase.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cmbDataBase_BeforeDropDown);
             // 
             // lblServer
             // 
-            this.lblServer.Location = new System.Drawing.Point(27, 24);
-            this.lblServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblServer.Location = new System.Drawing.Point(36, 30);
             this.lblServer.Name = "lblServer";
-            this.lblServer.Size = new System.Drawing.Size(75, 19);
+            this.lblServer.Size = new System.Drawing.Size(100, 23);
             this.lblServer.TabIndex = 2;
             this.lblServer.Text = "Server:";
             // 
             // lblUsername
             // 
-            this.lblUsername.Location = new System.Drawing.Point(27, 48);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblUsername.Location = new System.Drawing.Point(36, 59);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(75, 19);
+            this.lblUsername.Size = new System.Drawing.Size(100, 23);
             this.lblUsername.TabIndex = 3;
             this.lblUsername.Text = "User Name:";
             // 
             // lblPassword
             // 
-            this.lblPassword.Location = new System.Drawing.Point(27, 72);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblPassword.Location = new System.Drawing.Point(36, 88);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(75, 19);
+            this.lblPassword.Size = new System.Drawing.Size(100, 23);
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Password:";
             // 
             // lblDatabase
             // 
-            this.lblDatabase.Location = new System.Drawing.Point(27, 95);
-            this.lblDatabase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblDatabase.Location = new System.Drawing.Point(36, 117);
             this.lblDatabase.Name = "lblDatabase";
-            this.lblDatabase.Size = new System.Drawing.Size(75, 19);
+            this.lblDatabase.Size = new System.Drawing.Size(100, 23);
             this.lblDatabase.TabIndex = 5;
             this.lblDatabase.Text = "Database:";
             // 
             // txtUsername
             // 
             this.txtUsername.Enabled = false;
-            this.txtUsername.Location = new System.Drawing.Point(189, 45);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Location = new System.Drawing.Point(252, 55);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(231, 21);
+            this.txtUsername.Size = new System.Drawing.Size(308, 24);
             this.txtUsername.TabIndex = 6;
             // 
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(189, 67);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Location = new System.Drawing.Point(252, 83);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(231, 21);
+            this.txtPassword.Size = new System.Drawing.Size(308, 24);
             this.txtPassword.TabIndex = 7;
             // 
             // chkWinAuth
@@ -127,51 +119,47 @@
             this.chkWinAuth.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkWinAuth.Checked = true;
             this.chkWinAuth.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWinAuth.Location = new System.Drawing.Point(189, 130);
-            this.chkWinAuth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkWinAuth.Location = new System.Drawing.Point(252, 160);
             this.chkWinAuth.Name = "chkWinAuth";
-            this.chkWinAuth.Size = new System.Drawing.Size(22, 16);
+            this.chkWinAuth.Size = new System.Drawing.Size(30, 20);
             this.chkWinAuth.TabIndex = 8;
             this.chkWinAuth.CheckStateChanged += new System.EventHandler(this.chkWinAuth_CheckStateChanged);
             // 
             // lblWindowsAuth
             // 
-            this.lblWindowsAuth.Location = new System.Drawing.Point(27, 130);
-            this.lblWindowsAuth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblWindowsAuth.Location = new System.Drawing.Point(36, 160);
             this.lblWindowsAuth.Name = "lblWindowsAuth";
-            this.lblWindowsAuth.Size = new System.Drawing.Size(158, 19);
+            this.lblWindowsAuth.Size = new System.Drawing.Size(210, 23);
             this.lblWindowsAuth.TabIndex = 9;
             this.lblWindowsAuth.Text = "Windows Authentication:";
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(339, 149);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Location = new System.Drawing.Point(452, 183);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(81, 25);
+            this.btnLogin.Size = new System.Drawing.Size(108, 31);
             this.btnLogin.TabIndex = 10;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // lblDevelopedby
+            // ultraLabel1
             // 
             appearance1.ForeColor = System.Drawing.Color.Silver;
-            this.lblDevelopedby.Appearance = appearance1;
-            this.lblDevelopedby.Enabled = false;
-            this.lblDevelopedby.Location = new System.Drawing.Point(1, 164);
-            this.lblDevelopedby.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblDevelopedby.Name = "lblDevelopedby";
-            this.lblDevelopedby.Size = new System.Drawing.Size(245, 19);
-            this.lblDevelopedby.TabIndex = 11;
-            this.lblDevelopedby.Text = "Developed By : Stephen Brett  © 2015";
+            this.ultraLabel1.Appearance = appearance1;
+            this.ultraLabel1.Enabled = false;
+            this.ultraLabel1.Location = new System.Drawing.Point(1, 202);
+            this.ultraLabel1.Name = "ultraLabel1";
+            this.ultraLabel1.Size = new System.Drawing.Size(327, 23);
+            this.ultraLabel1.TabIndex = 11;
+            this.ultraLabel1.Text = "Developed By : Stephen Brett  © 2015";
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(437, 184);
-            this.Controls.Add(this.lblDevelopedby);
+            this.ClientSize = new System.Drawing.Size(583, 226);
+            this.Controls.Add(this.ultraLabel1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblWindowsAuth);
             this.Controls.Add(this.chkWinAuth);
@@ -183,7 +171,6 @@
             this.Controls.Add(this.lblServer);
             this.Controls.Add(this.cmbDataBase);
             this.Controls.Add(this.cmbServer);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frmlogin";
@@ -200,17 +187,17 @@
 
         #endregion
 
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor cmbServer;
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor cmbDataBase;
+        private Infragistics.Win.Misc.UltraLabel lblServer;
+        private Infragistics.Win.Misc.UltraLabel lblUsername;
+        private Infragistics.Win.Misc.UltraLabel lblPassword;
+        private Infragistics.Win.Misc.UltraLabel lblDatabase;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtUsername;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPassword;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkWinAuth;
+        private Infragistics.Win.Misc.UltraLabel lblWindowsAuth;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel1;
         public Infragistics.Win.Misc.UltraButton btnLogin;
-        public Infragistics.Win.UltraWinEditors.UltraComboEditor cmbServer;
-        public Infragistics.Win.UltraWinEditors.UltraComboEditor cmbDataBase;
-        public Infragistics.Win.Misc.UltraLabel lblServer;
-        public Infragistics.Win.Misc.UltraLabel lblUsername;
-        public Infragistics.Win.Misc.UltraLabel lblPassword;
-        public Infragistics.Win.Misc.UltraLabel lblDatabase;
-        public Infragistics.Win.UltraWinEditors.UltraTextEditor txtUsername;
-        public Infragistics.Win.UltraWinEditors.UltraTextEditor txtPassword;
-        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkWinAuth;
-        public Infragistics.Win.Misc.UltraLabel lblWindowsAuth;
-        public Infragistics.Win.Misc.UltraLabel lblDevelopedby;
     }
 }
