@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Infragistics.Win.UltraWinEditors;
+using Re_useable_Classes.ParentalControl;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Infragistics.Win.UltraWinEditors;
-using Re_useable_Classes.ParentalControl;
 
 namespace Re_useable_Classes.SQL
 {
@@ -103,7 +103,7 @@ namespace Re_useable_Classes.SQL
             object value = sqlAdapter.SelectCommand.Parameters["@ParSequence"].Value;
             if (!string.IsNullOrEmpty(value.ToString()))
             {
-                var outputValue = (int) value;
+                var outputValue = (int)value;
                 return outputValue;
             }
             else
@@ -263,7 +263,6 @@ namespace Re_useable_Classes.SQL
             }
             return dtTable;
         }
-
 
         public CurrentUserPermissions GetUserPermissions(string userId)
         {
@@ -478,7 +477,7 @@ namespace Re_useable_Classes.SQL
             sqlAdapter.Fill(dtTable);
             if (outputParameter != null)
             {
-                value = (string) sqlAdapter.SelectCommand.Parameters[outputParameter.ParameterName].Value;
+                value = (string)sqlAdapter.SelectCommand.Parameters[outputParameter.ParameterName].Value;
             }
             sqlAdapter.SelectCommand.Parameters.Clear();
             if ((_mTheTransaction == null))
@@ -635,7 +634,6 @@ namespace Re_useable_Classes.SQL
             return Connection;
         }
 
-
         //Execute SQL statment
         public void ExecuteSql(string strSql)
         {
@@ -666,7 +664,6 @@ namespace Re_useable_Classes.SQL
                     ex);
             }
         }
-
 
         //Get single value
         public object GetSingleValue

@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Re_useable_Classes.Windows
 {
-    public class GetIP
+    public class GetIp
     {
         public static string GetClientIp()
         {
@@ -28,7 +28,6 @@ namespace Re_useable_Classes.Windows
             const string ipUrl3 = "http://www.showmyip.com/";
 
             string ipaddress = (GetExternalIp(ipUrl1) ?? GetExternalIp(ipUrl2)) ?? GetExternalIp(ipUrl3);
-
 
             return ipaddress;
         }
@@ -66,7 +65,6 @@ namespace Re_useable_Classes.Windows
                     return strIp;
                 }
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine("Can't retrieve external IP: " + ex.Message);

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Infragistics.Win.AppStyling;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using Infragistics.Win.AppStyling;
 
 namespace Re_useable_Classes
 {

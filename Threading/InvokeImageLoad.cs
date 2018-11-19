@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using Infragistics.Win.UltraWinEditors;
+using System.Drawing;
 using System.Windows.Forms;
-using Infragistics.Win.UltraWinEditors;
 
 namespace Re_useable_Classes.Threading
 {

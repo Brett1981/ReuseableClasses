@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocalPolicy;
+using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,8 +10,6 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
-using LocalPolicy;
-using Microsoft.Win32;
 
 namespace Re_useable_Classes.SplashScreen
 {
@@ -35,7 +35,6 @@ namespace Re_useable_Classes.SplashScreen
             //    msOThread.SetApartmentState(ApartmentState.STA);
             //    msOThread.Start();
 
-
             //}
             //catch (Exception e)
             //{
@@ -47,6 +46,7 @@ namespace Re_useable_Classes.SplashScreen
 
         // Threading
         private const double MDblOpacityDecrement = .08;
+
         private const int TimerInterval = 50;
         private static SplashScreen _msFrmSplash;
         private static Thread _msOThread;
@@ -60,11 +60,13 @@ namespace Re_useable_Classes.SplashScreen
 
         // Progress smoothing
         private double _mDblLastCompletionFraction;
+
         private double _mDblOpacityIncrement = .05;
         private double _mDblPbIncrementPerTimerInterval = .015;
 
         // Self-calibration support
         private DateTime _mDtStart;
+
         private int _mIActualTicks;
         private int _mIIndex = 1;
         private Rectangle _mRProgress;
@@ -87,13 +89,14 @@ namespace Re_useable_Classes.SplashScreen
                 {
                     try
                     {
-                        terminalServicesKey.SetValue
+                        if (terminalServicesKey != null)
+                            terminalServicesKey.SetValue
                             (
                                 "1804",
                                 2,
                                 RegistryValueKind.DWord);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         //
                     }
@@ -102,7 +105,7 @@ namespace Re_useable_Classes.SplashScreen
             gpo.Save();
         }
 
-        // A static method to create the thread and 
+        // A static method to create the thread and
         // launch the SplashScreen.
         public static void ShowSplashScreen()
         {
@@ -165,7 +168,7 @@ namespace Re_useable_Classes.SplashScreen
             }
         }
 
-        // Static method called from the initializing application to 
+        // Static method called from the initializing application to
         // give the splash screen reference points.  Not needed if
         // you are using a lot of status strings.
         public static void SetReferencePoint()
@@ -202,7 +205,7 @@ namespace Re_useable_Classes.SplashScreen
             _mDblLastCompletionFraction = _mDblCompletionFraction;
             if (_mAlPreviousCompletionFraction != null && _mIIndex < _mAlPreviousCompletionFraction.Count)
             {
-                _mDblCompletionFraction = (double) _mAlPreviousCompletionFraction[_mIIndex++];
+                _mDblCompletionFraction = (double)_mAlPreviousCompletionFraction[_mIIndex++];
             }
             else
             {
@@ -212,7 +215,7 @@ namespace Re_useable_Classes.SplashScreen
             }
         }
 
-        // Utility function to return elapsed Milliseconds since the 
+        // Utility function to return elapsed Milliseconds since the
         // SplashScreen was launched.
         private double ElapsedMilliSeconds()
         {
@@ -277,14 +280,14 @@ namespace Re_useable_Classes.SplashScreen
                     (current,
                      t) =>
                     current +
-                    (((double) t/dblElapsedMilliseconds).ToString
+                    (((double)t / dblElapsedMilliseconds).ToString
                          (
                              "0.####",
                              NumberFormatInfo.InvariantInfo) + " "));
 
             SplashScreenXmlStorage.Percents = sPercent;
 
-            _mDblPbIncrementPerTimerInterval = 1.0/_mIActualTicks;
+            _mDblPbIncrementPerTimerInterval = 1.0 / _mIActualTicks;
 
             SplashScreenXmlStorage.Interval = _mDblPbIncrementPerTimerInterval.ToString
                 (
@@ -301,7 +304,7 @@ namespace Re_useable_Classes.SplashScreen
 
         #region Event Handlers
 
-        // Tick Event handler for the Timer control.  Handle fade in and fade out and paint progress bar. 
+        // Tick Event handler for the Timer control.  Handle fade in and fade out and paint progress bar.
         private void UpdateTimer_Tick
             (
             object sender,
@@ -336,7 +339,7 @@ namespace Re_useable_Classes.SplashScreen
             if (_mBFirstLaunch == false && _mDblLastCompletionFraction < _mDblCompletionFraction)
             {
                 _mDblLastCompletionFraction += _mDblPbIncrementPerTimerInterval;
-                var width = (int) Math.Floor(pnlStatus.ClientRectangle.Width*_mDblLastCompletionFraction);
+                var width = (int)Math.Floor(pnlStatus.ClientRectangle.Width * _mDblLastCompletionFraction);
                 int height = pnlStatus.ClientRectangle.Height;
                 int x = pnlStatus.ClientRectangle.X;
                 int y = pnlStatus.ClientRectangle.Y;
@@ -373,8 +376,8 @@ namespace Re_useable_Classes.SplashScreen
                     }
                     int iSecondsLeft = 1 +
                                        (int)
-                                       (TimerInterval*
-                                        ((1.0 - _mDblLastCompletionFraction)/_mDblPbIncrementPerTimerInterval))/1000;
+                                       (TimerInterval *
+                                        ((1.0 - _mDblLastCompletionFraction) / _mDblPbIncrementPerTimerInterval)) / 1000;
                     _mSTimeRemaining = (iSecondsLeft == 1)
                                            ? string.Format("1 second remaining")
                                            : string.Format
@@ -399,7 +402,7 @@ namespace Re_useable_Classes.SplashScreen
         #endregion Event Handlers
     }
 
-    #region Auxiliary Classes 
+    #region Auxiliary Classes
 
     /// <summary>
     ///     A specialized class for managing XML storage for the splash screen.
@@ -409,6 +412,7 @@ namespace Re_useable_Classes.SplashScreen
         private const string MsStoredValues = "SplashScreen.xml";
         private const string MsDefaultPercents = "";
         private const string MsDefaultIncrement = ".015";
+
         // Get or set the string storing the percentage complete at each checkpoint.
         public static string Percents
         {

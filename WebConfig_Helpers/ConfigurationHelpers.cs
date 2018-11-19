@@ -13,7 +13,7 @@ namespace Re_useable_Classes.WebConfig_Helpers
         [ConfigurationProperty("name", IsKey = true, IsRequired = true)]
         public string Name
         {
-            get { return (string) this["name"]; }
+            get { return (string)this["name"]; }
         }
     }
 
@@ -24,10 +24,9 @@ namespace Re_useable_Classes.WebConfig_Helpers
             return new ValueElement();
         }
 
-
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((ValueElement) element).Name;
+            return ((ValueElement)element).Name;
         }
     }
 
@@ -36,7 +35,7 @@ namespace Re_useable_Classes.WebConfig_Helpers
         [ConfigurationProperty("Values")]
         public ValueElementCollection Values
         {
-            get { return (ValueElementCollection) this["Values"]; }
+            get { return (ValueElementCollection)this["Values"]; }
         }
     }
 }

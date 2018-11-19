@@ -4,16 +4,16 @@ using System.Data.Sql;
 
 namespace Re_useable_Classes.SQL
 {
-    public class GetSQLServers
+    public class GetSqlServers
     {
         private List<string> _list1;
 
-        public List<string> GetSqlServers()
+        public List<string> aGetSqlServers()
         {
-            return GetSqlServers(true);
+            return _GetSqlServers(true);
         }
 
-        private List<string> GetSqlServers(bool shouldSortList)
+        private List<string> _GetSqlServers(bool shouldSortList)
         {
             if (_list1 == null)
             {

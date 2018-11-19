@@ -8,7 +8,7 @@ namespace Re_useable_Classes.SQL
         private static DataAccess _objDataAccess;
         private static string _aConCatSelect = "*";
 
-        //Runs the given parameters for the Select Query and returns Bool (true/False_ for results. 
+        //Runs the given parameters for the Select Query and returns Bool (true/False_ for results.
         //Results if exists are stored in GlobalSettings.ASqlResultsTable for use later
 
         public static bool CheckSqlRecordExists

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Re_useable_Classes.Message_Helpers.Forms;
+using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using Re_useable_Classes.Message_Helpers.Forms;
 
 namespace Re_useable_Classes.SQL
 {
@@ -22,6 +22,7 @@ namespace Re_useable_Classes.SQL
         public SqlConnection Conn;
         public String ConnStr;
         public string SqlErrorText { get; set; }
+
         //        return true;
         //    }
         //    Console.WriteLine(@"Connection Failed!");
@@ -102,7 +103,7 @@ namespace Re_useable_Classes.SQL
             //Check for "'" in singular form causing a problem with the SQL Statment
             foreach (object sqlParameter in from object sqlParameter in ((command.Parameters))
                                             from item in
-                                                ((IEnumerable) ((SqlParameter) (sqlParameter)).Value).Cast<object>()
+                                                ((IEnumerable)((SqlParameter)(sqlParameter)).Value).Cast<object>()
                                                                                                      .Where
                                                 (
                                                     item => item.ToString()
@@ -176,6 +177,7 @@ namespace Re_useable_Classes.SQL
                         {
                             case null:
                                 break;
+
                             default:
                                 Conn = new SqlConnection(builder.ConnectionString);
 
@@ -331,7 +333,6 @@ namespace Re_useable_Classes.SQL
                             {
                                 // else try closing it and going again.
 
-
                                 aConn.CloseConnection();
                                 aConn.CreateConnection
                                     (
@@ -455,7 +456,7 @@ namespace Re_useable_Classes.SQL
                                             "Please Check You Credentials Are Valid" + "\r\n" + ex.StackTrace);
                                 }
                             }
-                                //removed here to try and stop crashing.
+                            //removed here to try and stop crashing.
                             else
                             {
                                 // else try closing it and going again.

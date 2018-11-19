@@ -9,12 +9,13 @@ namespace Re_useable_Classes.SQL
     {
         //Build Constructors
         public static string VersionNo = "1.01";
-        public static string AEntryId;
-        public static Form aFrmEvents { get; set; }
 
+        public static string AEntryId;
+        public static Form AFrmEvents { get; set; }
 
         //Connection Constructors
         public static bool IsLoading { get; set; }
+
         public static bool IsDevMode { get; set; }
         public static Connection AConnection { get; set; }
         public static string ADatabase { get; set; }
@@ -27,6 +28,7 @@ namespace Re_useable_Classes.SQL
 
         //Validation Constructors
         public static float AOrderNo { get; set; }
+
         public static string APacks { get; set; }
         public static string AWeight { get; set; }
         public static string AServiceCode { get; set; }
@@ -41,6 +43,7 @@ namespace Re_useable_Classes.SQL
 
         //Stored Procedure Variables
         public static string AStoredProc { get; set; }
+
         public static string AVarOrderPrim { get; set; }
         public static string AVarOrderNumber { get; set; }
         public static string AVarPacks { get; set; }

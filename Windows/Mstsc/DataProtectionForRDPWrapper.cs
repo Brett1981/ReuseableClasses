@@ -75,12 +75,12 @@ namespace Re_useable_Classes.Windows.Mstsc
             try
             {
                 int numberChars = hexString.Length;
-                var bytes = new byte[numberChars/2];
+                var bytes = new byte[numberChars / 2];
                 for (int i = 0;
                      i < numberChars;
                      i += 2)
                 {
-                    bytes[i/2] = Convert.ToByte
+                    bytes[i / 2] = Convert.ToByte
                         (
                             hexString.Substring
                                 (

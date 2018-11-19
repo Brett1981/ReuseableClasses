@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Re_useable_Classes.SQL
@@ -11,7 +11,7 @@ namespace Re_useable_Classes.SQL
     {
         public static MySqlConnection ConDataBase { get; set; }
         public static MySqlCommand CmdDataBase { get; set; }
-        public static string aDBase { get; set; }
+        public static string ADBase { get; set; }
 
         public static MySqlConnection AMySqlConnection()
         {
@@ -27,7 +27,7 @@ namespace Re_useable_Classes.SQL
             {
                 ConDataBase.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return ConDataBase;
             }
@@ -43,8 +43,8 @@ namespace Re_useable_Classes.SQL
             string aPassword,
             string aQuery)
         {
-            aDBase = aDb;
-            string constring = "datasource = " + aDatasource + ";database = " + aDBase + ";port=" + aPort +
+            ADBase = aDb;
+            string constring = "datasource = " + aDatasource + ";database = " + ADBase + ";port=" + aPort +
                                ";username= " +
                                aUsername + ";password= " +
                                aPassword + "";
@@ -58,7 +58,7 @@ namespace Re_useable_Classes.SQL
             {
                 ConDataBase.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return ConDataBase;
             }
@@ -78,20 +78,24 @@ namespace Re_useable_Classes.SQL
             try
             {
                 MySqlDataReader myReader = CmdDataBase.ExecuteReader();
-                while (myReader.Read())
+
                 {
-                    string row = "";
-                    for (int i = 0;
-                         i < myReader.FieldCount;
-                         i++)
+                    while (myReader.Read())
                     {
-                        row += myReader.GetValue(i)
-                                       .ToString();
+                        string row = "";
+                        for (int i = 0;
+                            i < myReader.FieldCount;
+                            i++)
+                        {
+                            row += myReader.GetValue(i)
+                                .ToString();
+                        }
+                        aList.Add(row);
                     }
-                    aList.Add(row);
+                    myReader.Close();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return aList;
             }
@@ -106,13 +110,14 @@ namespace Re_useable_Classes.SQL
         {
             var dataTable = new DataTable();
 
-
             try
             {
-                if (aConnection.State != ConnectionState.Open)
+                if (aConnection.State != ConnectionState.Closed)
                 {
-                    aConnection.Open();
+                    aConnection.Close();
                 }
+                aConnection.Open();
+
                 var cmd = new MySqlCommand
                           {
                               Connection = aConnection,
@@ -164,7 +169,7 @@ namespace Re_useable_Classes.SQL
             {
                 ConDataBase.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return ConDataBase;
             }
@@ -178,10 +183,11 @@ namespace Re_useable_Classes.SQL
             string aQuery,
             byte[] anarray = null)
         {
-            if (aConnection.State != ConnectionState.Open)
+            if (aConnection.State != ConnectionState.Closed)
             {
-                aConnection.Open();
+                aConnection.Close();
             }
+            aConnection.Open();
             var aList = new List<string>();
             if (string.IsNullOrEmpty(aQuery))
             {
@@ -195,39 +201,55 @@ namespace Re_useable_Classes.SQL
                 aConnection);
             if (anarray != null)
             {
-                CmdDataBase.Parameters.Add
-                    (
+                CmdDataBase.Parameters.AddWithValue(
                         "?p1",
                         anarray);
             }
-            MySqlDataReader myReader = null;
+
             try
             {
-                myReader = CmdDataBase.ExecuteReader();
-                //myReader.Read();
-                while (myReader.Read())
+                MySqlDataReader myReader = CmdDataBase.ExecuteReader();
+
                 {
-                    string row = "";
-                    for (int i = 0;
-                         i < myReader.FieldCount;
-                         i++)
+                    //myReader.Read();
+                    while (myReader.Read())
                     {
-                        row += myReader.GetValue(i)
-                                       .ToString();
+                        string row = "";
+                        for (int i = 0;
+                            i < myReader.FieldCount;
+                            i++)
+                        {
+                            row += myReader.GetValue(i)
+                                .ToString();
+                        }
+                        aList.Add(row);
                     }
-                    aList.Add(row);
+                    myReader.Close();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                if (myReader != null)
+                using (MySqlDataReader myReader = CmdDataBase.ExecuteReader())
                 {
+                    //myReader.Read();
+                    while (myReader.Read())
+                    {
+                        string row = "";
+                        for (int i = 0;
+                            i < myReader.FieldCount;
+                            i++)
+                        {
+                            row += myReader.GetValue(i)
+                                .ToString();
+                        }
+                        aList.Add(row);
+                    }
                     myReader.Close();
                 }
                 aConnection.Close();
                 return aList;
             }
-            myReader.Close();
+
             aConnection.Close();
             return aList;
         }

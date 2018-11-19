@@ -10,7 +10,7 @@ namespace Re_useable_Classes.SQL
         public static List<SqlParameter> BuildSqlParamters(DataTable dt)
         {
             var sqlParamColl = new List<SqlParameter>();
-            //Check if DataTable is not null 
+            //Check if DataTable is not null
             if (dt == null)
             {
                 return null;
@@ -40,7 +40,6 @@ namespace Re_useable_Classes.SQL
             {
                 return null;
             }
-
 
             return sqlParamColl;
         }

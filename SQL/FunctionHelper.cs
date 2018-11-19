@@ -71,7 +71,6 @@ namespace Re_useable_Classes.SQL
                                                                                                      .Output;
                 }
 
-
                 sqlAdapter.Fill(holdVals);
                 objValue = sqlAdapter.SelectCommand.ExecuteScalar();
             }
@@ -96,7 +95,7 @@ namespace Re_useable_Classes.SQL
                 dt.Columns.Add
                     (
                         "aParamterName",
-                        typeof (string));
+                        typeof(string));
                 dt.Columns.Add
                     (
                         "aParameterValue",
@@ -108,7 +107,7 @@ namespace Re_useable_Classes.SQL
                 dt.Columns.Add
                     (
                         "aInOut",
-                        typeof (int));
+                        typeof(int));
 
                 dt.Rows.Add
                     (
@@ -121,7 +120,6 @@ namespace Re_useable_Classes.SQL
             {
                 return null;
             }
-
 
             return dt.Rows[0];
         }

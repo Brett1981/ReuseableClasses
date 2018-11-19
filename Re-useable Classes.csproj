@@ -38,32 +38,35 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Infragistics4.Shared.v13.1, Version=13.1.20131.2124, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v15.1, Version=15.1.20151.2203, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Program Files\Infragistics\2015.1\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v15.1.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Infragistics4.Win.Misc.v13.1, Version=13.1.20131.2124, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Infragistics4.Win.Misc.v15.1, Version=15.1.20151.2203, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Program Files\Infragistics\2015.1\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Misc.v15.1.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinEditors.v13.1, Version=13.1.20131.2124, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Infragistics4.Shared.v15.1, Version=15.1.20151.2203, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Program Files\Infragistics\2015.1\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v15.1.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinGrid.v13.1, Version=13.1.20131.2124, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinToolbars.v13.1, Version=13.1.20131.2124, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Infragistics4.Win.v13.1, Version=13.1.20131.2124, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="LocalPolicy">
-      <HintPath>..\..\..\..\..\Downloads\LocalPolicy.1.0.0.1\LocalPolicy.dll</HintPath>
+      <HintPath>..\..\..\..\SoftwareDistribution\DLLs\LocalPolicy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
@@ -76,21 +79,23 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Office.Interop.Outlook">
+      <HintPath>..\..\..\..\SoftwareDistribution\DLLs\Microsoft.Office.Interop.Outlook.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <Private>True</Private>
     </Reference>
     <Reference Include="mysql.data">
-      <HintPath>..\..\..\..\..\Dropbox\mysql.data.dll</HintPath>
+      <HintPath>..\..\..\..\SoftwareDistribution\DLLs\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <Private>True</Private>
     </Reference>
-    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -121,8 +126,9 @@
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorythms\AlphanumericSort.cs" />
@@ -167,7 +173,6 @@
     <Compile Include="Converters\WebsiteToHTML.cs" />
     <Compile Include="Converters\WebsiteToImage.cs" />
     <Compile Include="Converters\WordtoPDF.cs" />
-    <Compile Include="Converters\XmlParser.cs" />
     <Compile Include="Emailing\EmailHelper.cs" />
     <Compile Include="Emailing\SystemHelper.cs" />
     <Compile Include="Encryption\CryptoHelper.cs" />
@@ -189,9 +194,7 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FTP\ftpmethods.cs" />
     <Compile Include="Functions\DateTimeYesterday.cs" />
-    <Compile Include="Functions\FormatDataString.cs" />
     <Compile Include="Functions\IsImageFile.cs" />
     <Compile Include="Functions\TextFunctions.cs" />
     <Compile Include="Functions\TimeDateChecker.cs" />
@@ -236,7 +239,6 @@
     <Compile Include="SQL\BuilderUpdateClass.cs" />
     <Compile Include="SQL\Connection.cs" />
     <Compile Include="SQL\DataAccess.cs" />
-    <Compile Include="SQL\CheckInputDataRow.cs" />
     <Compile Include="SQL\ForeignKeyContainer.cs" />
     <Compile Include="SQL\FunctionHelper.cs" />
     <Compile Include="SQL\GetDatabases.cs" />
@@ -249,7 +251,6 @@
     <Compile Include="Threading\InvokeImageLoad.cs" />
     <Compile Include="Threading\MyThread.cs" />
     <Compile Include="Threading\ThreadPooling.cs" />
-    <Compile Include="Validators\XmlValidator.cs" />
     <Compile Include="WebConfig_Helpers\ConfigurationHelpers.cs" />
     <Compile Include="Windows\GetIP.cs" />
     <Compile Include="Windows\Mstsc\DataProtectionForRDPWrapper.cs" />
@@ -363,7 +364,6 @@
   <ItemGroup>
     <None Include="Resources\Glomb.gif" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

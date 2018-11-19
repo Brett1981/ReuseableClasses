@@ -46,8 +46,10 @@ namespace Re_useable_Classes.Threading
     {
         private readonly LinkedList<Action> _tasks = new LinkedList<Action>();
         private readonly LinkedList<Thread> _workers;
+
         // queue of worker threads ready to process actions
         private bool _disallowAdd;
+
         // set to true when disposing queue but there are still tasks pending
         private bool _disposed;
 

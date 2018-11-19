@@ -14,7 +14,7 @@ namespace Re_useable_Classes.Windows.Mstsc
 
         private const int CryptprotectLocalMachine = 0x4;
         private const int CryptprotectUiForbidden = 0x1;
-        private static readonly IntPtr NullPtr = ((IntPtr) ((0)));
+        private static readonly IntPtr NullPtr = ((IntPtr)((0)));
         private readonly Store _store;
 
         public DataProtector(Store tempStore)
@@ -327,7 +327,7 @@ namespace Re_useable_Classes.Windows.Mstsc
 
         private static void InitPromptstruct(ref CryptprotectPromptstruct ps)
         {
-            ps.cbSize = Marshal.SizeOf(typeof (CryptprotectPromptstruct));
+            ps.cbSize = Marshal.SizeOf(typeof(CryptprotectPromptstruct));
             ps.dwPromptFlags = 0;
             ps.hwndApp = NullPtr;
             ps.szPrompt = null;

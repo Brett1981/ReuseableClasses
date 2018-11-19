@@ -188,7 +188,7 @@ namespace Re_useable_Classes.Windows.Mstsc
                         break;
 
                     case "session bpp":
-                        SessionBpp = (SessionBpPs) int.Parse(v);
+                        SessionBpp = (SessionBpPs)int.Parse(v);
                         break;
 
                     case "full address":
@@ -200,11 +200,11 @@ namespace Re_useable_Classes.Windows.Mstsc
                         break;
 
                     case "keyboardhook":
-                        KeyboardHook = (KeyboardHooks) int.Parse(v);
+                        KeyboardHook = (KeyboardHooks)int.Parse(v);
                         break;
 
                     case "audiomode":
-                        AudioMode = (AudioModes) int.Parse(v);
+                        AudioMode = (AudioModes)int.Parse(v);
                         break;
 
                     case "redirectdrives":
@@ -247,9 +247,9 @@ namespace Re_useable_Classes.Windows.Mstsc
                         ShellWorkingDirectory = v;
                         break;
 
-                        //case "password 51":
-                        //    this._password = v;
-                        //    break;
+                    //case "password 51":
+                    //    this._password = v;
+                    //    break;
 
                     case "disable wallpaper":
                         DisableWallpaper = int.Parse(v);
@@ -294,16 +294,16 @@ namespace Re_useable_Classes.Windows.Mstsc
                     ScreenMode,
                     DesktopWidth,
                     DesktopHeight,
-                    (int) SessionBpp,
-                    (int) WinPosStr.WinState,
+                    (int)SessionBpp,
+                    (int)WinPosStr.WinState,
                     WinPosStr.Rect.Top,
                     WinPosStr.Rect.Left,
                     WinPosStr.Rect.Width,
                     WinPosStr.Rect.Height,
                     FullAddress,
                     Compression,
-                    (int) KeyboardHook,
-                    (int) AudioMode,
+                    (int)KeyboardHook,
+                    (int)AudioMode,
                     RedirectDrives,
                     RedirectPrinters,
                     RedirectComPorts,
@@ -314,7 +314,7 @@ namespace Re_useable_Classes.Windows.Mstsc
                     Domain,
                     AlternateShell,
                     ShellWorkingDirectory,
-                    //this._password, removed this as it appears to stop the RDP file being opened in Win7
+                //this._password, removed this as it appears to stop the RDP file being opened in Win7
                     DisableWallpaper,
                     DisableFullWindowDrag,
                     DisableMenuAnims,
@@ -379,29 +379,5 @@ namespace Re_useable_Classes.Windows.Mstsc
         }
 
         #endregion enum
-
-        #region structs
-
-        #endregion structs
-
-        #region variables
-
-        #region RDP template
-
-        #endregion RDP template
-
-        #region member fields
-
-        #endregion member fields
-
-        #endregion variables
-
-        #region properties
-
-        #endregion properties
-
-        #region methods
-
-        #endregion methods
     }
 }
