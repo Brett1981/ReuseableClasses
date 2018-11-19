@@ -73,7 +73,7 @@ namespace Re_useable_Classes.Converters
                     KeyValuePair<string, object> pair = keyValuePair;
                     foreach (PropertyInfo property in properties.Where(property => property.Name == pair.Key))
                     {
-                        if (keyValuePair.Value != null && keyValuePair.Value.GetType() != typeof (DBNull))
+                        if (keyValuePair.Value != null && keyValuePair.Value.GetType() != typeof(DBNull))
                         {
                             if (keyValuePair.Value is Guid)
                             {

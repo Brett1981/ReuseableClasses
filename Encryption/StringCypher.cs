@@ -11,8 +11,10 @@ namespace Re_useable_Classes.Encryption
     {
         // This constant string is used as a "salt" value for the PasswordDeriveBytes function calls.
         private const string InitVector = "tu89geji340t89u2";
+
         // This constant is used to determine the keysize of the encryption algorithm.
         private const int Keysize = 256;
+
         private const char Base64Padding = '=';
 
         private static readonly HashSet<char> Base64Characters = new HashSet<char>
@@ -94,7 +96,7 @@ namespace Re_useable_Classes.Encryption
                 (
                 passPhrase,
                 null);
-            byte[] keyBytes = password.GetBytes(Keysize/8);
+            byte[] keyBytes = password.GetBytes(Keysize / 8);
             var symmetricKey = new RijndaelManaged
                                {
                                    Mode = CipherMode.CBC
@@ -136,7 +138,7 @@ namespace Re_useable_Classes.Encryption
                     (
                     passPhrase,
                     null);
-                byte[] keyBytes = password.GetBytes(Keysize/8);
+                byte[] keyBytes = password.GetBytes(Keysize / 8);
                 var symmetricKey = new RijndaelManaged
                                    {
                                        Mode = CipherMode.CBC
@@ -187,7 +189,7 @@ namespace Re_useable_Classes.Encryption
                     String.Empty);
 
             if (param.Length == 0 ||
-                (param.Length%4) != 0 ||
+                (param.Length % 4) != 0 ||
                 param.Length < 24)
             {
                 // Base64 string should not be empty

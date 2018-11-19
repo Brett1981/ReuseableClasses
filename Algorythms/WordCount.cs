@@ -1,9 +1,9 @@
 ﻿/*
- * WordCount.cs 
- * 
+ * WordCount.cs
+ *
  * This is original code that implements a word-count algorithm that yields very similar
  * results to Microsoft Word.
- * 
+ *
  * */
 
 namespace Re_useable_Classes.Algorythms

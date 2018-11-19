@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.Office.Interop.Excel;
+﻿using Microsoft.Office.Interop.Excel;
 using Re_useable_Classes.Message_Helpers.Forms;
+using System;
 using DataTable = System.Data.DataTable;
 
 namespace Re_useable_Classes.Converters
@@ -84,7 +84,6 @@ namespace Re_useable_Classes.Converters
                 {
                     throw new Exception("ExportToExcel: \n" + ex.Message);
                 }
-                return excelFilePath;
             }
         }
     }

@@ -84,21 +84,21 @@ namespace Re_useable_Classes.Converters
             var bf = new BinaryFormatter();
             using (var ms = new MemoryStream(byteArrayIn))
             {
-                return (Image) bf.Deserialize(ms);
+                return (Image)bf.Deserialize(ms);
             }
             //return returnImage;
         }
 
         public static byte[] GetBytes(string str)
         {
-            var data = new byte[str.Length*2];
+            var data = new byte[str.Length * 2];
             for (int i = 0;
                  i < str.Length;
                  ++i)
             {
                 char ch = str[i];
-                data[i*2] = (byte) (ch & 0xFF);
-                data[i*2 + 1] = (byte) ((ch & 0xFF00) >> 8);
+                data[i * 2] = (byte)(ch & 0xFF);
+                data[i * 2 + 1] = (byte)((ch & 0xFF00) >> 8);
             }
 
             return data;
@@ -106,19 +106,19 @@ namespace Re_useable_Classes.Converters
 
         public static string GetString(byte[] bytes)
         {
-            var ch = new char[bytes.Length/2];
+            var ch = new char[bytes.Length / 2];
             for (int i = 0;
                  i < ch.Length;
                  ++i)
             {
-                ch[i] = (char) (bytes[i*2] + (bytes[i*2 + 1] << 8));
+                ch[i] = (char)(bytes[i * 2] + (bytes[i * 2 + 1] << 8));
             }
             return new String(ch);
         }
 
         public static string ByteArrayToString(byte[] byteArray)
         {
-            var hex = new StringBuilder(byteArray.Length*2);
+            var hex = new StringBuilder(byteArray.Length * 2);
             foreach (byte b in byteArray)
             {
                 hex.AppendFormat
@@ -131,26 +131,26 @@ namespace Re_useable_Classes.Converters
 
         public static byte[] ConvertHexToBytes(string input)
         {
-            var result = new byte[(input.Length + 1)/2];
+            var result = new byte[(input.Length + 1) / 2];
             int offset = 0;
-            if (input.Length%2 == 1)
+            if (input.Length % 2 == 1)
             {
                 // If length of input is odd, the first character has an implicit 0 prepended.
-                result[0] = (byte) Convert.ToUInt32
+                result[0] = (byte)Convert.ToUInt32
                                        (
                                            input[0] + "",
                                            16);
                 offset = 1;
             }
             for (int i = 0;
-                 i < input.Length/2;
+                 i < input.Length / 2;
                  i++)
             {
-                result[i + offset] = (byte) Convert.ToUInt32
+                result[i + offset] = (byte)Convert.ToUInt32
                                                 (
                                                     input.Substring
                                                 (
-                                                    i*2 + offset,
+                                                    i * 2 + offset,
                                                     2),
                                                     16);
             }

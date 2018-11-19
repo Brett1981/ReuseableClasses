@@ -16,6 +16,7 @@ namespace Re_useable_Classes.Converters
 
         // string reader which will move over input text
         private readonly StringReader _inputStringReader;
+
         private readonly StringBuilder _nextToken;
 
         // next character code read from input that is not yet part of any token
@@ -43,7 +44,7 @@ namespace Re_useable_Classes.Converters
             _nextCharacterCode = 0;
             NextCharacter = ' ';
             _lookAheadCharacterCode = _inputStringReader.Read();
-            _lookAheadCharacter = (char) _lookAheadCharacterCode;
+            _lookAheadCharacter = (char)_lookAheadCharacterCode;
             _previousCharacter = ' ';
             _ignoreNextWhitespace = true;
             _nextToken = new StringBuilder(100);
@@ -189,9 +190,11 @@ namespace Re_useable_Classes.Converters
                     case '[':
                         ReadDynamicContent();
                         break;
+
                     case '-':
                         ReadComment();
                         break;
+
                     default:
                         ReadUnknownDirective();
                         break;
@@ -404,7 +407,7 @@ namespace Re_useable_Classes.Converters
                      i < 7 && Char.IsDigit(_lookAheadCharacter);
                      i++)
                 {
-                    entityCode = 10*entityCode + (_lookAheadCharacterCode - '0');
+                    entityCode = 10 * entityCode + (_lookAheadCharacterCode - '0');
                     ReadLookAheadCharacter();
                 }
                 if (_lookAheadCharacter == ';')
@@ -414,7 +417,7 @@ namespace Re_useable_Classes.Converters
                     _nextCharacterCode = entityCode;
 
                     // if this is out of range it will set the character to '?'
-                    NextCharacter = (char) _nextCharacterCode;
+                    NextCharacter = (char)_nextCharacterCode;
 
                     // as far as we are concerned, this is an entity
                     IsNextCharacterEntity = true;
@@ -603,7 +606,7 @@ namespace Re_useable_Classes.Converters
                 return;
             }
             _lookAheadCharacterCode = _inputStringReader.Read();
-            _lookAheadCharacter = (char) _lookAheadCharacterCode;
+            _lookAheadCharacter = (char)_lookAheadCharacterCode;
         }
 
         /// <summary>
@@ -725,25 +728,5 @@ namespace Re_useable_Classes.Converters
         }
 
         #endregion Constructors
-
-        #region Internal Methods
-
-        #endregion Internal Methods
-
-        #region Internal Properties
-
-        #endregion Internal Properties
-
-        #region Private Methods
-
-        #endregion Private Methods
-
-        #region Private Properties
-
-        #endregion Private Properties
-
-        #region Private Fields
-
-        #endregion Private Fields
     }
 }

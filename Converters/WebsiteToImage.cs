@@ -108,7 +108,7 @@ namespace Re_useable_Classes.Converters
             WebBrowserDocumentCompletedEventArgs e)
         {
             // Capture
-            var browser = (WebBrowser) sender;
+            var browser = (WebBrowser)sender;
             if (browser.Document != null && browser.Document.Body != null)
             {
                 browser.ClientSize = new Size

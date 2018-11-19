@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Infragistics.Win.UltraWinGrid;
+using System.Collections.Generic;
 using System.Linq;
-using Infragistics.Win.UltraWinGrid;
 
 namespace Re_useable_Classes.Converters
 {
@@ -14,8 +14,8 @@ namespace Re_useable_Classes.Converters
                 string aString in
                     from UltraGridCell cell in aUltraGridRow.Cells
                     select cell.Value.ToString()
-                    into aString
-                    select aString + "\r\n")
+                        into aString
+                        select aString + "\r\n")
             {
                 ARowList.Add(aString);
             }

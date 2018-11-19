@@ -8,21 +8,21 @@ namespace Re_useable_Classes.Converters
      *          var images = new List<ImageAndThumb>();
                 var image = new ImageAndThumb(((string[])(data))[0]);
                 images.Add(image);
-                listView.ItemSettings.DefaultImage = images[0].Thumb; 
-     * 
-     * 
-     * 
+                listView.ItemSettings.DefaultImage = images[0].Thumb;
+     *
+     *
+     *
      */
 
     public class ImageAndThumb
     {
-        private readonly string ImagePath;
+        private readonly string _imagePath;
         public Image Big;
         public Image Thumb;
 
         public ImageAndThumb(string fileName)
         {
-            ImagePath = fileName;
+            _imagePath = fileName;
             Image image = Image.FromFile(fileName);
             Image thumb = image.GetThumbnailImage
                 (
@@ -34,7 +34,7 @@ namespace Re_useable_Classes.Converters
 
         public Image LoadBigImage()
         {
-            Big = Image.FromFile(ImagePath);
+            Big = Image.FromFile(_imagePath);
             return Big;
         }
 

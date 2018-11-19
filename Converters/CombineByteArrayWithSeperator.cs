@@ -37,7 +37,6 @@ namespace Re_useable_Classes.Converters
                         result.WriteByte(res);
                     }
 
-
                     result.Write
                         (
                             array,

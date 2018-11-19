@@ -41,12 +41,12 @@ namespace Re_useable_Classes.Converters
 
         public static double ConvertBytesToMegabytes(long bytes)
         {
-            return (bytes/1024f)/1024f;
+            return (bytes / 1024f) / 1024f;
         }
 
         public static double ConvertKilobytesToMegabytes(long kilobytes)
         {
-            return kilobytes/1024f;
+            return kilobytes / 1024f;
         }
 
         public static string ConvertUStoUkDateFormat(string aUsDate)

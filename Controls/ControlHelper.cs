@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Infragistics.Win;
+using Infragistics.Win.UltraWinEditors;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win.UltraWinToolbars;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using Infragistics.Win;
-using Infragistics.Win.UltraWinEditors;
-using Infragistics.Win.UltraWinGrid;
-using Infragistics.Win.UltraWinToolbars;
 using ButtonDisplayStyle = Infragistics.Win.UltraWinGrid.ButtonDisplayStyle;
 using ColumnStyle = Infragistics.Win.UltraWinGrid.ColumnStyle;
 
@@ -154,21 +154,25 @@ namespace Re_useable_Classes.Controls
                     {
                         case "System.String":
                             break;
+
                         case "System.Int32":
                             col.Style = ColumnStyle.Integer;
                             col.CellAppearance.TextHAlign = HAlign.Right;
                             col.Header.Appearance.TextHAlign = HAlign.Right;
                             break;
+
                         case "System.Double":
                         case "System.Decimal":
                             col.Style = ColumnStyle.Double;
                             col.CellAppearance.TextHAlign = HAlign.Right;
                             col.Header.Appearance.TextHAlign = HAlign.Right;
                             break;
+
                         case "System.DateTime":
                         case "System.Date":
                             col.Style = ColumnStyle.DateTime;
                             break;
+
                         case "System.Boolean":
                             col.Style = ColumnStyle.CheckBox;
                             break;
@@ -197,6 +201,7 @@ namespace Re_useable_Classes.Controls
                 {
                     case "System.String":
                         break;
+
                     case "System.Int32":
                         col.Style = ColumnStyle.Integer;
                         if (rightAlignNumericFields)
@@ -205,6 +210,7 @@ namespace Re_useable_Classes.Controls
                             col.Header.Appearance.TextHAlign = HAlign.Right;
                         }
                         break;
+
                     case "System.Double":
                     case "System.Decimal":
                         col.Style = ColumnStyle.Double;
@@ -214,10 +220,12 @@ namespace Re_useable_Classes.Controls
                             col.Header.Appearance.TextHAlign = HAlign.Right;
                         }
                         break;
+
                     case "System.DateTime":
                     case "System.Date":
                         col.Style = ColumnStyle.DateTime;
                         break;
+
                     case "System.Boolean":
                         col.Style = ColumnStyle.CheckBox;
                         break;
@@ -236,17 +244,21 @@ namespace Re_useable_Classes.Controls
             {
                 case "System.String":
                     return ("'" + row[cName] + "'");
+
                 case "System.Int32":
                 case "System.Double":
                 case "System.Decimal":
                     return row[cName].ToString();
+
                 case "System.DateTime":
                 case "System.Date":
                     return row[cName].ToString();
+
                 case "System.Boolean":
                     return (Convert.ToBoolean(row[cName])
                                 ? 1
                                 : 0).ToString();
+
                 default:
                     return ("'" + row[cName] + "'");
             }
@@ -264,15 +276,18 @@ namespace Re_useable_Classes.Controls
                     case "System.String":
                         cell.Value = "";
                         break;
+
                     case "System.Int32":
                     case "System.Double":
                     case "System.Decimal":
                         cell.Value = 0;
                         break;
+
                     case "System.DateTime":
                     case "System.Date":
                         cell.Value = null;
                         break;
+
                     case "System.Boolean":
                         cell.Value = false;
                         break;
@@ -392,7 +407,7 @@ namespace Re_useable_Classes.Controls
                         (
                             "_",
                             StringComparison.Ordinal)) == "_PRIMARY")
-                    //Parent primary
+                //Parent primary
                 {
                     //Build Insert
                     strColumns += ((strColumns.Length == 0

@@ -27,8 +27,8 @@ namespace Re_useable_Classes.Converters
                             j);
 
                     //create the grayscale version of the pixel
-                    var grayScale = (int) ((originalColor.R*.3) + (originalColor.G*.59)
-                                           + (originalColor.B*.11));
+                    var grayScale = (int)((originalColor.R * .3) + (originalColor.G * .59)
+                                           + (originalColor.B * .11));
 
                     //create the color object
                     Color newColor = Color.FromArgb

@@ -28,8 +28,8 @@ namespace Re_useable_Classes.Algorythms
                 (
                     x is string && y is string,
                     "Only strings allowed");
-            var s1 = (string) x;
-            var s2 = (string) y;
+            var s1 = (string)x;
+            var s2 = (string)y;
 
             int thisMarker = 0;
             int thatMarker = 0;
@@ -82,7 +82,7 @@ namespace Re_useable_Classes.Algorythms
 
                 if ((thisChunkType == 1) && (thatChunkType == 1))
                 {
-                    // int.parse is faster 
+                    // int.parse is faster
                     int thisNumericChunk = int.Parse(thisChunk.ToString());
                     int thatNumericChunk = int.Parse(thatChunk.ToString());
 

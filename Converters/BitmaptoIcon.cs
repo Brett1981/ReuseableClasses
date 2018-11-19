@@ -62,11 +62,11 @@ namespace Re_useable_Classes.Converters
                     {
                         size = 0;
                     }
-                    Pngiconheader[6] = (byte) size;
-                    Pngiconheader[7] = (byte) size;
-                    Pngiconheader[14] = (byte) (png.Length & 255);
-                    Pngiconheader[15] = (byte) (png.Length/256);
-                    Pngiconheader[18] = (byte) (Pngiconheader.Length);
+                    Pngiconheader[6] = (byte)size;
+                    Pngiconheader[7] = (byte)size;
+                    Pngiconheader[14] = (byte)(png.Length & 255);
+                    Pngiconheader[15] = (byte)(png.Length / 256);
+                    Pngiconheader[18] = (byte)(Pngiconheader.Length);
 
                     fs.Write
                         (

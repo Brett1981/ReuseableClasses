@@ -7,10 +7,11 @@ namespace Re_useable_Classes.Converters
     {
         /*
           How to Use:
-          dtJ = new ConvertDatatableToJson();   
-          JsonString = dtJ.DataTableToJson((DataTable)ViewState["dt"]); 
+          dtJ = new ConvertDatatableToJson();
+          JsonString = dtJ.DataTableToJson((DataTable)ViewState["dt"]);
 
          */
+
         /// <summary>
         /// </summary>
         /// <param name="dt"></param>

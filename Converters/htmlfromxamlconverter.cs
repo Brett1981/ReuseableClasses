@@ -115,12 +115,15 @@ namespace Re_useable_Classes.Converters
                 case 1:
                     cssThickness = thickness;
                     break;
+
                 case 2:
                     cssThickness = values[1] + " " + values[0];
                     break;
+
                 case 4:
                     cssThickness = values[1] + " " + values[2] + " " + values[3] + " " + values[0];
                     break;
+
                 default:
                     cssThickness = values[0];
                     break;
@@ -219,39 +222,51 @@ namespace Re_useable_Classes.Converters
                     case "Span":
                         htmlElementName = "SPAN";
                         break;
+
                     case "InlineUIContainer":
                         htmlElementName = "SPAN";
                         break;
+
                     case "Bold":
                         htmlElementName = "B";
                         break;
+
                     case "Italic":
                         htmlElementName = "I";
                         break;
+
                     case "Paragraph":
                         htmlElementName = "P";
                         break;
+
                     case "BlockUIContainer":
                         htmlElementName = "DIV";
                         break;
+
                     case "Section":
                         htmlElementName = "DIV";
                         break;
+
                     case "Table":
                         htmlElementName = "TABLE";
                         break;
+
                     case "TableColumn":
                         htmlElementName = "COL";
                         break;
+
                     case "TableRowGroup":
                         htmlElementName = "TBODY";
                         break;
+
                     case "TableRow":
                         htmlElementName = "TR";
                         break;
+
                     case "TableCell":
                         htmlElementName = "TD";
                         break;
+
                     case "List":
                         string marker = xamlReader.GetAttribute("MarkerStyle");
                         if (marker == null || marker == "None" || marker == "DiStockControl" || marker == "Circle" ||
@@ -264,15 +279,19 @@ namespace Re_useable_Classes.Converters
                             htmlElementName = "OL";
                         }
                         break;
+
                     case "ListItem":
                         htmlElementName = "LI";
                         break;
+
                     case "Hyperlink":
                         htmlElementName = "A";
                         break;
+
                     case "LineBreak":
                         htmlElementName = "BR";
                         break;
+
                     default:
                         htmlElementName = null; // Ignore the element
                         break;
@@ -386,6 +405,7 @@ namespace Re_useable_Classes.Converters
                                     xamlReader.NodeType == XmlNodeType.EndElement ||
                                     xamlReader.NodeType == XmlNodeType.Element && xamlReader.IsEmptyElement);
                             break;
+
                         case XmlNodeType.Comment:
                             if (htmlWriter != null)
                             {
@@ -400,6 +420,7 @@ namespace Re_useable_Classes.Converters
                             }
                             elementContentStarted = true;
                             break;
+
                         case XmlNodeType.CDATA:
                         case XmlNodeType.Text:
                         case XmlNodeType.SignificantWhitespace:
@@ -523,92 +544,118 @@ namespace Re_useable_Classes.Converters
 
                 switch (xamlReader.Name)
                 {
-                        // Character fomatting properties
-                        // ------------------------------
+                    // Character fomatting properties
+                    // ------------------------------
                     case "Background":
                         css = "background-color:" + ParseXamlColor(xamlReader.Value) + ";";
                         break;
+
                     case "FontFamily":
                         css = "font-family:" + xamlReader.Value + ";";
                         break;
+
                     case "FontStyle":
                         css = "font-style:" + xamlReader.Value.ToLower() + ";";
                         break;
+
                     case "FontWeight":
                         css = "font-weight:" + xamlReader.Value.ToLower() + ";";
                         break;
+
                     case "FontStretch":
                         break;
+
                     case "FontSize":
                         css = "font-size:" + xamlReader.Value + ";";
                         break;
+
                     case "Foreground":
                         css = "color:" + ParseXamlColor(xamlReader.Value) + ";";
                         break;
+
                     case "TextDecorations":
                         css = xamlReader.Value.ToLower() == "strikethrough"
                                   ? "text-decoration:line-through;"
                                   : "text-decoration:underline;";
                         break;
+
                     case "TextEffects":
                         break;
+
                     case "Emphasis":
                         break;
+
                     case "StandardLigatures":
                         break;
+
                     case "Variants":
                         break;
+
                     case "Capitals":
                         break;
+
                     case "Fraction":
                         break;
 
-                        // Paragraph formatting properties
-                        // -------------------------------
+                    // Paragraph formatting properties
+                    // -------------------------------
                     case "Padding":
                         css = "padding:" + ParseXamlThickness(xamlReader.Value) + ";";
                         break;
+
                     case "Margin":
                         css = "margin:" + ParseXamlThickness(xamlReader.Value) + ";";
                         break;
+
                     case "BorderThickness":
                         css = "border-width:" + ParseXamlThickness(xamlReader.Value) + ";";
                         borderSet = true;
                         break;
+
                     case "BorderBrush":
                         css = "border-color:" + ParseXamlColor(xamlReader.Value) + ";";
                         borderSet = true;
                         break;
+
                     case "LineHeight":
                         break;
+
                     case "TextIndent":
                         css = "text-indent:" + xamlReader.Value + ";";
                         break;
+
                     case "TextAlignment":
                         css = "text-align:" + xamlReader.Value + ";";
                         break;
+
                     case "IsKeptTogether":
                         break;
+
                     case "IsKeptWithNext":
                         break;
+
                     case "ColumnBreakBefore":
                         break;
+
                     case "PageBreakBefore":
                         break;
+
                     case "FlowDirection":
                         break;
 
-                        // Table attributes
-                        // ----------------
+                    // Table attributes
+                    // ----------------
                     case "Width":
                         css = "width:" + xamlReader.Value + ";";
                         break;
+
                     case "ColumnSpan":
                         htmlWriter.WriteAttributeString
                             (
                                 "COLSPAN",
                                 xamlReader.Value);
                         break;
+
                     case "RowSpan":
                         htmlWriter.WriteAttributeString
                             (
@@ -616,7 +663,7 @@ namespace Re_useable_Classes.Converters
                                 xamlReader.Value);
                         break;
 
-                        // Hyperlink Attributes
+                    // Hyperlink Attributes
                     case "NavigateUri":
                         htmlWriter.WriteAttributeString
                             (
@@ -656,9 +703,5 @@ namespace Re_useable_Classes.Converters
         // ----------------------
 
         #endregion Private Methods
-
-        #region Private Fields
-
-        #endregion Private Fields
     }
 }

@@ -73,12 +73,12 @@ namespace Re_useable_Classes.Converters
                 "Million ",
                 "Billion "
             };
-            num[0] = number%1000; // units
-            num[1] = number/1000;
-            num[2] = number/1000000;
-            num[1] = num[1] - 1000*num[2]; // thousands
-            num[3] = number/1000000000; // billions
-            num[2] = num[2] - 1000*num[3]; // millions
+            num[0] = number % 1000; // units
+            num[1] = number / 1000;
+            num[2] = number / 1000000;
+            num[1] = num[1] - 1000 * num[2]; // thousands
+            num[3] = number / 1000000000; // billions
+            num[2] = num[2] - 1000 * num[3]; // millions
             for (int i = 3;
                  i > 0;
                  i--)
@@ -98,10 +98,10 @@ namespace Re_useable_Classes.Converters
                 {
                     continue;
                 }
-                int u = num[i]%10;
-                int t = num[i]/10;
-                int h = num[i]/100;
-                t = t - 10*h; // tens
+                int u = num[i] % 10;
+                int t = num[i] / 10;
+                int h = num[i] / 100;
+                t = t - 10 * h; // tens
                 if (h > 0)
                 {
                     sb.Append(words0[h] + "Hundred ");

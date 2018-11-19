@@ -1,25 +1,24 @@
-﻿using System.Collections.Generic;
-using Infragistics.Win;
+﻿using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid;
+using System.Collections.Generic;
 
 namespace Re_useable_Classes.Controls
 {
     public class PrepareValueListsClass
     {
         /*
-         *  
+         *
          Example Use
-         
+
          var alistofitems = new List<string>()
             {
                 "Material",
                 "Additional"
             };
            PrepareValueListsClass.PrepareValueLists(utgBOM, e, alistofitems, "ItemType", ColumnStyle.DropDownList, true, "Material");
-         
-         
-         * 
-         * 
+
+         *
+         *
          */
 
         public static void PrepareValueLists

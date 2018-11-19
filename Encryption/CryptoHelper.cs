@@ -9,6 +9,7 @@ namespace Re_useable_Classes.Encryption
     {
         // DO NOT CHANGE
         private readonly ICryptoTransform _decryptorTransform;
+
         private readonly ICryptoTransform _encryptorTransform;
 
         private readonly byte[] _key =
@@ -202,7 +203,7 @@ namespace Re_useable_Classes.Encryption
                     "input");
             }
 
-            var bytes = new byte[input.Length/3];
+            var bytes = new byte[input.Length / 3];
             int i = 0;
             int j = 0;
 

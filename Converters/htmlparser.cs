@@ -69,6 +69,7 @@ namespace Re_useable_Classes.Converters
 
         internal const string XhtmlNamespace = "http://www.w3.org/1999/xhtml";
         private const string HtmlEndFragmentComment = "<!--EndFragment-->";
+
         // Html header structure.
         //      Version:1.0
         //      StartHTML:000000000
@@ -86,11 +87,15 @@ namespace Re_useable_Classes.Converters
         //
         // .....................................................................
         private const string HtmlStartFragmentComment = "<!--StartFragment-->";
+
         // document from which all elements are created
         private readonly XmlDocument _document;
+
         private readonly HtmlLexicalAnalyzer _htmlLexicalAnalyzer;
+
         // stack for open elements
         private readonly Stack<XmlElement> _openedElements;
+
         private readonly Stack<XmlElement> _pendingInlineElements;
 
         /// <summary>
@@ -131,7 +136,7 @@ namespace Re_useable_Classes.Converters
 
             // each of 6 numbers is represented by "{0:D10}" in the format string
             // must actually occupy 10 digit positions ("0123456789")
-            int startHtml = HtmlHeader.Length + 6*("0123456789".Length - "{0:D10}".Length);
+            int startHtml = HtmlHeader.Length + 6 * ("0123456789".Length - "{0:D10}".Length);
             int endHtml = startHtml + htmlString.Length;
             int startFragment = htmlString.IndexOf
                 (
@@ -538,6 +543,7 @@ namespace Re_useable_Classes.Converters
                             }
                         }
                         break;
+
                     case HtmlTokenType.ClosingTagStart:
                         _htmlLexicalAnalyzer.GetNextTagToken();
                         if (_htmlLexicalAnalyzer.NextTokenType == HtmlTokenType.Name)
@@ -552,9 +558,11 @@ namespace Re_useable_Classes.Converters
                             CloseElement(htmlElementName);
                         }
                         break;
+
                     case HtmlTokenType.Text:
                         AddTextContent(_htmlLexicalAnalyzer.NextToken);
                         break;
+
                     case HtmlTokenType.Comment:
                         AddComment(_htmlLexicalAnalyzer.NextToken);
                         break;
@@ -568,24 +576,12 @@ namespace Re_useable_Classes.Converters
                 htmlRootElement.FirstChild == htmlRootElement.LastChild &&
                 htmlRootElement.FirstChild.LocalName.ToLower() == "html")
             {
-                htmlRootElement = (XmlElement) htmlRootElement.FirstChild;
+                htmlRootElement = (XmlElement)htmlRootElement.FirstChild;
             }
 
             return htmlRootElement;
         }
 
         #endregion Constructors
-
-        #region Internal Methods
-
-        #endregion Internal Methods
-
-        #region Private Methods
-
-        #endregion Private Methods
-
-        #region Private Fields
-
-        #endregion Private Fields
     }
 }

@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using Microsoft.Office.Interop.Word;
+using System.IO;
 using System.Reflection;
-using Microsoft.Office.Interop.Word;
 
 namespace Re_useable_Classes.Converters
 {
@@ -13,7 +13,6 @@ namespace Re_useable_Classes.Converters
             (
             string aOutputPdfFile,
             string aWordDocFile)
-
         {
             string str;
             Convert
@@ -26,19 +25,16 @@ namespace Re_useable_Classes.Converters
             (
             string wordFileName,
             out string pdfFileName)
-
         {
             _word.Visible = false;
 
             _word.ScreenUpdating = false;
 
-
-// Cast as Object for word Open method  
+            // Cast as Object for word Open method
 
             object filename = wordFileName;
 
-
-// Use the dummy value as a placeholder for optional arguments  
+            // Use the dummy value as a placeholder for optional arguments
 
             Document doc = _word.Documents.Open
                 (
@@ -61,17 +57,14 @@ namespace Re_useable_Classes.Converters
 
             doc.Activate();
 
-
             object outputFileName = pdfFileName = Path.ChangeExtension
                                                       (
                                                           wordFileName,
                                                           "pdf");
 
-
             object fileFormat = WdSaveFormat.wdFormatPDF;
 
-
-// Save document into PDF Format 
+            // Save document into PDF Format
 
             doc.SaveAs
                 (
@@ -92,15 +85,11 @@ namespace Re_useable_Classes.Converters
                     ref _missingValue,
                     ref _missingValue);
 
+            // Close the Word document, but leave the Word application open.
 
-// Close the Word document, but leave the Word application open. 
+            // doc has to be cast to type _Document so that it will find the
 
-
-// doc has to be cast to type _Document so that it will find the 
-
-
-// correct Close method. 
-
+            // correct Close method.
 
             object saveChanges = WdSaveOptions.wdDoNotSaveChanges;
 
@@ -112,11 +101,9 @@ namespace Re_useable_Classes.Converters
 
             doc = null;
 
+            // word has to be cast to type _Application so that it will find
 
-// word has to be cast to type _Application so that it will find 
-
-
-// the correct Quit method. 
+            // the correct Quit method.
 
             _word.Quit
                 (

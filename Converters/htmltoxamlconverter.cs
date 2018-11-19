@@ -41,6 +41,7 @@ namespace Re_useable_Classes.Converters
 
         // The constants reprtesent all Xaml names used in a conversion
         private const string XamlFlowDocument = "FlowDocument";
+
         private const string XamlRun = "Run";
         private const string XamlSpan = "Span";
         private const string XamlHyperlink = "Hyperlink";
@@ -279,7 +280,7 @@ namespace Re_useable_Classes.Converters
             else if (htmlNode is XmlElement)
             {
                 // Identify element name
-                var htmlElement = (XmlElement) htmlNode;
+                var htmlElement = (XmlElement)htmlNode;
 
                 string htmlElementName = htmlElement.LocalName; // Keep the name case-sensitive to check xml names
                 string htmlElementNamespace = htmlElement.NamespaceURI;
@@ -294,7 +295,7 @@ namespace Re_useable_Classes.Converters
                     // Switch to an appropriate kind of processing depending on html element name
                     switch (htmlElementName)
                     {
-                            // Sections:
+                        // Sections:
                         case "html":
                         case "body":
                         case "div":
@@ -313,7 +314,7 @@ namespace Re_useable_Classes.Converters
                                     sourceContext);
                             break;
 
-                            // Paragraphs:
+                        // Paragraphs:
                         case "p":
                         case "h1":
                         case "h2":
@@ -349,6 +350,7 @@ namespace Re_useable_Classes.Converters
                                     stylesheet,
                                     sourceContext);
                             break;
+
                         case "li":
                             // LI outside of OL/UL
                             // Collect all sibling LIs, wrap them into a List and then proceed with the element following the last of LIs
@@ -453,7 +455,7 @@ namespace Re_useable_Classes.Converters
             }
             XmlElement xamlLineBreak = xamlParentElement.OwnerDocument.CreateElement
                 (
-                    /*prefix:*/
+                /*prefix:*/
                     null, /*localName:*/XamlLineBreak,
                     XamlNamespace);
             xamlParentElement.AppendChild(xamlLineBreak);
@@ -470,7 +472,7 @@ namespace Re_useable_Classes.Converters
             {
                 xamlLineBreak = xamlParentElement.OwnerDocument.CreateElement
                     (
-                        /*prefix:*/
+                    /*prefix:*/
                         null, /*localName:*/XamlLineBreak,
                         XamlNamespace);
             }
@@ -556,7 +558,7 @@ namespace Re_useable_Classes.Converters
                 {
                     XmlElement xamlElement = xamlParentElement.OwnerDocument.CreateElement
                         (
-                            /*prefix:*/
+                        /*prefix:*/
                             null, /*localName:*/XamlSection,
                             XamlNamespace);
                     ApplyLocalProperties
@@ -638,7 +640,7 @@ namespace Re_useable_Classes.Converters
             }
             XmlElement xamlElement = xamlParentElement.OwnerDocument.CreateElement
                 (
-                    /*prefix:*/
+                /*prefix:*/
                     null, /*localName:*/XamlParagraph,
                     XamlNamespace);
             ApplyLocalProperties
@@ -696,7 +698,7 @@ namespace Re_useable_Classes.Converters
             {
                 XmlElement xamlParagraph = xamlParentElement.OwnerDocument.CreateElement
                     (
-                        /*prefix:*/
+                    /*prefix:*/
                         null, /*localName:*/XamlParagraph,
                         XamlNamespace);
                 XmlNode lastNodeProcessed = null;
@@ -814,6 +816,7 @@ namespace Re_useable_Classes.Converters
                                     stylesheet,
                                     sourceContext);
                             break;
+
                         case "img":
                             AddImage
                                 (
@@ -823,6 +826,7 @@ namespace Re_useable_Classes.Converters
                                     stylesheet,
                                     sourceContext);
                             break;
+
                         case "br":
                         case "SelectHR":
                             AddBreak
@@ -830,6 +834,7 @@ namespace Re_useable_Classes.Converters
                                     xamlParentElement,
                                     htmlElementName);
                             break;
+
                         default:
                             if (HtmlSchema.IsInlineElement(htmlElementName) ||
                                 HtmlSchema.IsBlockElement(htmlElementName))
@@ -906,7 +911,7 @@ namespace Re_useable_Classes.Converters
             }
             XmlElement xamlElement = xamlParentElement.OwnerDocument.CreateElement
                 (
-                    /*prefix:*/
+                /*prefix:*/
                     null, /*localName:*/xamlElementName,
                     XamlNamespace);
             ApplyLocalProperties
@@ -960,7 +965,7 @@ namespace Re_useable_Classes.Converters
             //  This is a work around since WPF/XAML does not support &nbsp.
             textData = textData.Replace
                 (
-                    (char) 160,
+                    (char)160,
                     ' ');
 
             if (textData.Length <= 0)
@@ -1014,7 +1019,7 @@ namespace Re_useable_Classes.Converters
                 {
                     XmlElement xamlElement = xamlParentElement.OwnerDocument.CreateElement
                         (
-                            /*prefix:*/
+                        /*prefix:*/
                             null, /*localName:*/XamlHyperlink,
                             XamlNamespace);
                     ApplyLocalProperties
@@ -1079,6 +1084,7 @@ namespace Re_useable_Classes.Converters
                 case "StartFragment":
                     _inlineFragmentParentElement = xamlParentElement;
                     break;
+
                 case "EndFragment":
                     if (_inlineFragmentParentElement == null && xamlParentElement != null)
                     {
@@ -1110,7 +1116,7 @@ namespace Re_useable_Classes.Converters
                     {
                         xamlFlowDocumentElement = xamlFlowDocumentElement.OwnerDocument.CreateElement
                             (
-                                /*prefix:*/
+                            /*prefix:*/
                                 null, /*localName:*/XamlSpan,
                                 XamlNamespace);
                     }
@@ -1242,11 +1248,11 @@ namespace Re_useable_Classes.Converters
                 }
                 else
                 {
-                    sourceContext.Add((XmlElement) htmlChildNode);
+                    sourceContext.Add((XmlElement)htmlChildNode);
                     AddListItem
                         (
                             xamlListElement,
-                            (XmlElement) htmlChildNode,
+                            (XmlElement)htmlChildNode,
                             currentProperties,
                             stylesheet,
                             sourceContext);
@@ -1302,7 +1308,7 @@ namespace Re_useable_Classes.Converters
             if (xamlListItemElementPreviousSibling != null && xamlListItemElementPreviousSibling.LocalName == XamlList)
             {
                 // Previously added Xaml element was a list. We will add the new li to it
-                xamlListElement = (XmlElement) xamlListItemElementPreviousSibling;
+                xamlListElement = (XmlElement)xamlListItemElementPreviousSibling;
             }
             else
             {
@@ -1334,11 +1340,11 @@ namespace Re_useable_Classes.Converters
                 AddListItem
                     (
                         xamlListElement,
-                        (XmlElement) htmlChildNode,
+                        (XmlElement)htmlChildNode,
                         inheritedProperties,
                         stylesheet,
                         sourceContext);
-                lastProcessedListItemElement = (XmlElement) htmlChildNode;
+                lastProcessedListItemElement = (XmlElement)htmlChildNode;
                 htmlChildNode = htmlChildNode.NextSibling;
                 htmlChildNodeName = htmlChildNode == null
                                         ? null
@@ -1531,85 +1537,87 @@ namespace Re_useable_Classes.Converters
                             case "tfoot":
                             case "thead":
                             case "tbody":
-                            {
-                                //  Add more special processing for TableHeader and TableFooter
-                                if (xamlTableElement.OwnerDocument != null)
                                 {
-                                    XmlElement xamlTableBodyElement = xamlTableElement.OwnerDocument.CreateElement
-                                        (
-                                            null,
-                                            XamlTableRowGroup,
-                                            XamlNamespace);
-                                    xamlTableElement.AppendChild(xamlTableBodyElement);
-
-                                    sourceContext.Add((XmlElement) htmlChildNode);
-
-                                    // Get properties of Html tbody element
-                                    Hashtable tbodyElementLocalProperties;
-                                    Hashtable tbodyElementCurrentProperties =
-                                        GetElementProperties
+                                    //  Add more special processing for TableHeader and TableFooter
+                                    if (xamlTableElement.OwnerDocument != null)
+                                    {
+                                        XmlElement xamlTableBodyElement = xamlTableElement.OwnerDocument.CreateElement
                                             (
-                                                (XmlElement) htmlChildNode,
-                                                currentProperties,
-                                                out tbodyElementLocalProperties,
+                                                null,
+                                                XamlTableRowGroup,
+                                                XamlNamespace);
+                                        xamlTableElement.AppendChild(xamlTableBodyElement);
+
+                                        sourceContext.Add((XmlElement)htmlChildNode);
+
+                                        // Get properties of Html tbody element
+                                        Hashtable tbodyElementLocalProperties;
+                                        Hashtable tbodyElementCurrentProperties =
+                                            GetElementProperties
+                                                (
+                                                    (XmlElement)htmlChildNode,
+                                                    currentProperties,
+                                                    out tbodyElementLocalProperties,
+                                                    stylesheet,
+                                                    sourceContext);
+                                        // TODO: apply local properties for tbody
+
+                                        // Process children of htmlChildNode, which is tbody, for tr elements
+                                        AddTableRowsToTableBody
+                                            (
+                                                xamlTableBodyElement,
+                                                htmlChildNode.FirstChild,
+                                                tbodyElementCurrentProperties,
+                                                columnStarts,
                                                 stylesheet,
                                                 sourceContext);
-                                    // TODO: apply local properties for tbody
-
-                                    // Process children of htmlChildNode, which is tbody, for tr elements
-                                    AddTableRowsToTableBody
-                                        (
-                                            xamlTableBodyElement,
-                                            htmlChildNode.FirstChild,
-                                            tbodyElementCurrentProperties,
-                                            columnStarts,
-                                            stylesheet,
-                                            sourceContext);
-                                    if (xamlTableBodyElement.HasChildNodes)
-                                    {
-                                        xamlTableElement.AppendChild(xamlTableBodyElement);
-                                        // else: if there is no TRs in this TBody, we simply ignore it
+                                        if (xamlTableBodyElement.HasChildNodes)
+                                        {
+                                            xamlTableElement.AppendChild(xamlTableBodyElement);
+                                            // else: if there is no TRs in this TBody, we simply ignore it
+                                        }
                                     }
+
+                                    Debug.Assert
+                                        (
+                                            sourceContext.Count > 0 &&
+                                            sourceContext[sourceContext.Count - 1] == htmlChildNode);
+                                    sourceContext.RemoveAt(sourceContext.Count - 1);
+
+                                    htmlChildNode = htmlChildNode.NextSibling;
                                 }
-
-                                Debug.Assert
-                                    (
-                                        sourceContext.Count > 0 &&
-                                        sourceContext[sourceContext.Count - 1] == htmlChildNode);
-                                sourceContext.RemoveAt(sourceContext.Count - 1);
-
-                                htmlChildNode = htmlChildNode.NextSibling;
-                            }
                                 break;
+
                             case "tr":
-                            {
-                                // Tbody is not present, but tr element is present. Tr is wrapped in tbody
-                                if (xamlTableElement.OwnerDocument != null)
                                 {
-                                    XmlElement xamlTableBodyElement = xamlTableElement.OwnerDocument.CreateElement
-                                        (
-                                            null,
-                                            XamlTableRowGroup,
-                                            XamlNamespace);
-
-                                    // We use currentProperties of xamlTableElement when adding rows since the tbody element is artificially created and has
-                                    // no properties of its own
-
-                                    htmlChildNode = AddTableRowsToTableBody
-                                        (
-                                            xamlTableBodyElement,
-                                            htmlChildNode,
-                                            currentProperties,
-                                            columnStarts,
-                                            stylesheet,
-                                            sourceContext);
-                                    if (xamlTableBodyElement.HasChildNodes)
+                                    // Tbody is not present, but tr element is present. Tr is wrapped in tbody
+                                    if (xamlTableElement.OwnerDocument != null)
                                     {
-                                        xamlTableElement.AppendChild(xamlTableBodyElement);
+                                        XmlElement xamlTableBodyElement = xamlTableElement.OwnerDocument.CreateElement
+                                            (
+                                                null,
+                                                XamlTableRowGroup,
+                                                XamlNamespace);
+
+                                        // We use currentProperties of xamlTableElement when adding rows since the tbody element is artificially created and has
+                                        // no properties of its own
+
+                                        htmlChildNode = AddTableRowsToTableBody
+                                            (
+                                                xamlTableBodyElement,
+                                                htmlChildNode,
+                                                currentProperties,
+                                                columnStarts,
+                                                stylesheet,
+                                                sourceContext);
+                                        if (xamlTableBodyElement.HasChildNodes)
+                                        {
+                                            xamlTableElement.AppendChild(xamlTableBodyElement);
+                                        }
                                     }
                                 }
-                            }
                                 break;
+
                             default:
                                 htmlChildNode = htmlChildNode.NextSibling;
                                 break;
@@ -1663,7 +1671,7 @@ namespace Re_useable_Classes.Converters
                                             {
                                                 return null;
                                             }
-                                            singleCell = (XmlElement) trChild;
+                                            singleCell = (XmlElement)trChild;
                                             break;
                                     }
                                 }
@@ -1690,7 +1698,7 @@ namespace Re_useable_Classes.Converters
                                 {
                                     return null;
                                 }
-                                singleCell = (XmlElement) trChild;
+                                singleCell = (XmlElement)trChild;
                                 break;
                         }
                     }
@@ -1748,8 +1756,8 @@ namespace Re_useable_Classes.Converters
                     xamlColumnElement.SetAttribute
                         (
                             XamlWidth,
-                            ((double) columnStartsAllRows[columnIndex + 1] -
-                             (double) columnStartsAllRows[columnIndex]).ToString
+                            ((double)columnStartsAllRows[columnIndex + 1] -
+                             (double)columnStartsAllRows[columnIndex]).ToString
                                 (
                                     CultureInfo.InvariantCulture));
                     xamlTableElement.AppendChild(xamlColumnElement);
@@ -1769,7 +1777,7 @@ namespace Re_useable_Classes.Converters
                         AddTableColumnGroup
                             (
                                 xamlTableElement,
-                                (XmlElement) htmlChildNode,
+                                (XmlElement)htmlChildNode,
                                 currentProperties,
                                 stylesheet,
                                 sourceContext);
@@ -1779,7 +1787,7 @@ namespace Re_useable_Classes.Converters
                         AddTableColumn
                             (
                                 xamlTableElement,
-                                (XmlElement) htmlChildNode,
+                                (XmlElement)htmlChildNode,
                                 currentProperties,
                                 stylesheet,
                                 sourceContext);
@@ -1836,7 +1844,7 @@ namespace Re_useable_Classes.Converters
                     AddTableColumn
                         (
                             xamlTableElement,
-                            (XmlElement) htmlNode,
+                            (XmlElement)htmlNode,
                             currentProperties,
                             stylesheet,
                             sourceContext);
@@ -1940,80 +1948,82 @@ namespace Re_useable_Classes.Converters
                 switch (htmlChildNode.LocalName.ToLower())
                 {
                     case "tr":
-                    {
-                        if (xamlTableBodyElement.OwnerDocument != null)
                         {
-                            XmlElement xamlTableRowElement = xamlTableBodyElement.OwnerDocument.CreateElement
-                                (
-                                    null,
-                                    XamlTableRow,
-                                    XamlNamespace);
-
-                            sourceContext.Add((XmlElement) htmlChildNode);
-
-                            // Get tr element properties
-                            Hashtable trElementLocalProperties;
-                            Hashtable trElementCurrentProperties = GetElementProperties
-                                (
-                                    (XmlElement) htmlChildNode,
-                                    currentProperties,
-                                    out trElementLocalProperties,
-                                    stylesheet,
-                                    sourceContext);
-                            // TODO: apply local properties to tr element
-
-                            AddTableCellsToTableRow
-                                (
-                                    xamlTableRowElement,
-                                    htmlChildNode.FirstChild,
-                                    trElementCurrentProperties,
-                                    columnStarts,
-                                    activeRowSpans,
-                                    stylesheet,
-                                    sourceContext);
-                            if (xamlTableRowElement.HasChildNodes)
+                            if (xamlTableBodyElement.OwnerDocument != null)
                             {
-                                xamlTableBodyElement.AppendChild(xamlTableRowElement);
+                                XmlElement xamlTableRowElement = xamlTableBodyElement.OwnerDocument.CreateElement
+                                    (
+                                        null,
+                                        XamlTableRow,
+                                        XamlNamespace);
+
+                                sourceContext.Add((XmlElement)htmlChildNode);
+
+                                // Get tr element properties
+                                Hashtable trElementLocalProperties;
+                                Hashtable trElementCurrentProperties = GetElementProperties
+                                    (
+                                        (XmlElement)htmlChildNode,
+                                        currentProperties,
+                                        out trElementLocalProperties,
+                                        stylesheet,
+                                        sourceContext);
+                                // TODO: apply local properties to tr element
+
+                                AddTableCellsToTableRow
+                                    (
+                                        xamlTableRowElement,
+                                        htmlChildNode.FirstChild,
+                                        trElementCurrentProperties,
+                                        columnStarts,
+                                        activeRowSpans,
+                                        stylesheet,
+                                        sourceContext);
+                                if (xamlTableRowElement.HasChildNodes)
+                                {
+                                    xamlTableBodyElement.AppendChild(xamlTableRowElement);
+                                }
                             }
+
+                            Debug.Assert(sourceContext.Count > 0 && sourceContext[sourceContext.Count - 1] == htmlChildNode);
+                            sourceContext.RemoveAt(sourceContext.Count - 1);
+
+                            // Advance
+                            htmlChildNode = htmlChildNode.NextSibling;
                         }
-
-                        Debug.Assert(sourceContext.Count > 0 && sourceContext[sourceContext.Count - 1] == htmlChildNode);
-                        sourceContext.RemoveAt(sourceContext.Count - 1);
-
-                        // Advance
-                        htmlChildNode = htmlChildNode.NextSibling;
-                    }
                         break;
+
                     case "td":
-                    {
-                        // Tr element is not present. We create one and add td elements to it
-                        if (xamlTableBodyElement.OwnerDocument != null)
                         {
-                            XmlElement xamlTableRowElement = xamlTableBodyElement.OwnerDocument.CreateElement
-                                (
-                                    null,
-                                    XamlTableRow,
-                                    XamlNamespace);
-
-                            // This is incorrect formatting and the column starts should not be set in this case
-                            Debug.Assert(columnStarts == null);
-
-                            htmlChildNode = AddTableCellsToTableRow
-                                (
-                                    xamlTableRowElement,
-                                    htmlChildNode,
-                                    currentProperties,
-                                    null,
-                                    null,
-                                    stylesheet,
-                                    sourceContext);
-                            if (xamlTableRowElement.HasChildNodes)
+                            // Tr element is not present. We create one and add td elements to it
+                            if (xamlTableBodyElement.OwnerDocument != null)
                             {
-                                xamlTableBodyElement.AppendChild(xamlTableRowElement);
+                                XmlElement xamlTableRowElement = xamlTableBodyElement.OwnerDocument.CreateElement
+                                    (
+                                        null,
+                                        XamlTableRow,
+                                        XamlNamespace);
+
+                                // This is incorrect formatting and the column starts should not be set in this case
+                                Debug.Assert(columnStarts == null);
+
+                                htmlChildNode = AddTableCellsToTableRow
+                                    (
+                                        xamlTableRowElement,
+                                        htmlChildNode,
+                                        currentProperties,
+                                        null,
+                                        null,
+                                        stylesheet,
+                                        sourceContext);
+                                if (xamlTableRowElement.HasChildNodes)
+                                {
+                                    xamlTableBodyElement.AppendChild(xamlTableRowElement);
+                                }
                             }
                         }
-                    }
                         break;
+
                     default:
                         htmlChildNode = htmlChildNode.NextSibling;
                         break;
@@ -2080,12 +2090,12 @@ namespace Re_useable_Classes.Converters
                                 XamlTableCell,
                                 XamlNamespace);
 
-                        sourceContext.Add((XmlElement) htmlChildNode);
+                        sourceContext.Add((XmlElement)htmlChildNode);
 
                         Hashtable tdElementLocalProperties;
                         Hashtable tdElementCurrentProperties = GetElementProperties
                             (
-                                (XmlElement) htmlChildNode,
+                                (XmlElement)htmlChildNode,
                                 currentProperties,
                                 out tdElementLocalProperties,
                                 stylesheet,
@@ -2095,26 +2105,26 @@ namespace Re_useable_Classes.Converters
                         // make necessary changes and use them instead.
                         ApplyPropertiesToTableCellElement
                             (
-                                (XmlElement) htmlChildNode,
+                                (XmlElement)htmlChildNode,
                                 xamlTableCellElement);
 
                         if (columnStarts != null)
                         {
                             Debug.Assert(columnIndex < columnStarts.Count - 1);
-                            while (columnIndex < activeRowSpans.Count && (int) activeRowSpans[columnIndex] > 0)
+                            while (columnIndex < activeRowSpans.Count && (int)activeRowSpans[columnIndex] > 0)
                             {
-                                activeRowSpans[columnIndex] = (int) activeRowSpans[columnIndex] - 1;
-                                Debug.Assert((int) activeRowSpans[columnIndex] >= 0);
+                                activeRowSpans[columnIndex] = (int)activeRowSpans[columnIndex] - 1;
+                                Debug.Assert((int)activeRowSpans[columnIndex] >= 0);
                                 columnIndex++;
                             }
                             Debug.Assert(columnIndex < columnStarts.Count - 1);
-                            double columnWidth = GetColumnWidth((XmlElement) htmlChildNode);
+                            double columnWidth = GetColumnWidth((XmlElement)htmlChildNode);
                             int columnSpan = CalculateColumnSpan
                                 (
                                     columnIndex,
                                     columnWidth,
                                     columnStarts);
-                            int rowSpan = GetRowSpan((XmlElement) htmlChildNode);
+                            int rowSpan = GetRowSpan((XmlElement)htmlChildNode);
 
                             // Column cannot have no span
                             Debug.Assert(columnSpan > 0);
@@ -2132,7 +2142,7 @@ namespace Re_useable_Classes.Converters
                             {
                                 Debug.Assert(spannedColumnIndex < activeRowSpans.Count);
                                 activeRowSpans[spannedColumnIndex] = (rowSpan - 1);
-                                Debug.Assert((int) activeRowSpans[spannedColumnIndex] >= 0);
+                                Debug.Assert((int)activeRowSpans[spannedColumnIndex] >= 0);
                             }
 
                             columnIndex = columnIndex + columnSpan;
@@ -2226,7 +2236,7 @@ namespace Re_useable_Classes.Converters
             (
             object htmlTableElement,
             CssStylesheet stylesheet)
-            // ReSharper restore FunctionRecursiveOnAllPaths
+        // ReSharper restore FunctionRecursiveOnAllPaths
         {
             try
             {
@@ -2317,6 +2327,7 @@ namespace Re_useable_Classes.Converters
                             columnWidthsAvailable = false; // interrupt the analisys
                         }
                         break;
+
                     case "tr":
                         // Table row. Analyze column structure within row directly
                         double trWidth = AnalyzeTrStructure
@@ -2334,12 +2345,13 @@ namespace Re_useable_Classes.Converters
                             columnWidthsAvailable = false; // interrupt the analisys
                         }
                         break;
+
                     case "td":
                         // Incorrect formatting, too deep to analyze at this level. Return null.
                         // TODO: implement analysis at this level, possibly by creating a new tr
                         columnWidthsAvailable = false; // interrupt the analisys
                         break;
-                        // Element should not occur directly in table. Ignore it.
+                    // Element should not occur directly in table. Ignore it.
                 }
 
                 htmlChildNode = htmlChildNode.NextSibling;
@@ -2419,6 +2431,7 @@ namespace Re_useable_Classes.Converters
                             tbodyWidth = trWidth;
                         }
                         break;
+
                     case "td":
                         columnWidthsAvailable = false; // interrupt the analisys
                         break;
@@ -2483,17 +2496,17 @@ namespace Re_useable_Classes.Converters
             // Skip spanned columns to get to real column start
             if (columnIndex < activeRowSpans.Count)
             {
-                Debug.Assert((double) columnStarts[columnIndex] >= columnStart);
+                Debug.Assert((double)columnStarts[columnIndex] >= columnStart);
                 const double epsilon = 0;
-                if (Math.Abs((double) columnStarts[columnIndex] - columnStart) < epsilon)
+                if (Math.Abs((double)columnStarts[columnIndex] - columnStart) < epsilon)
                 {
                     // The new column may be in a spanned area
-                    while (columnIndex < activeRowSpans.Count && (int) activeRowSpans[columnIndex] > 0)
+                    while (columnIndex < activeRowSpans.Count && (int)activeRowSpans[columnIndex] > 0)
                     {
-                        activeRowSpans[columnIndex] = (int) activeRowSpans[columnIndex] - 1;
-                        Debug.Assert((int) activeRowSpans[columnIndex] >= 0);
+                        activeRowSpans[columnIndex] = (int)activeRowSpans[columnIndex] - 1;
+                        Debug.Assert((int)activeRowSpans[columnIndex] >= 0);
                         columnIndex++;
-                        columnStart = (double) columnStarts[columnIndex];
+                        columnStart = (double)columnStarts[columnIndex];
                     }
                 }
             }
@@ -2510,8 +2523,8 @@ namespace Re_useable_Classes.Converters
                         Debug.Assert(columnIndex <= columnStarts.Count);
                         if (columnIndex < columnStarts.Count)
                         {
-                            Debug.Assert(columnStart <= (double) columnStarts[columnIndex]);
-                            if (columnStart < (double) columnStarts[columnIndex])
+                            Debug.Assert(columnStart <= (double)columnStarts[columnIndex]);
+                            if (columnStart < (double)columnStarts[columnIndex])
                             {
                                 columnStarts.Insert
                                     (
@@ -2536,11 +2549,11 @@ namespace Re_useable_Classes.Converters
                             columnStarts.Add(columnStart);
                             activeRowSpans.Add(0);
                         }
-                        double columnWidth = GetColumnWidth((XmlElement) htmlChildNode);
+                        double columnWidth = GetColumnWidth((XmlElement)htmlChildNode);
                         const double epsilon = 0;
                         if (Math.Abs(columnWidth - -1) > epsilon)
                         {
-                            int rowSpan = GetRowSpan((XmlElement) htmlChildNode);
+                            int rowSpan = GetRowSpan((XmlElement)htmlChildNode);
 
                             int nextColumnIndex = GetNextColumnIndex
                                 (
@@ -2560,7 +2573,7 @@ namespace Re_useable_Classes.Converters
                                      spannedColumnIndex++)
                                 {
                                     activeRowSpans[spannedColumnIndex] = rowSpan - 1;
-                                    Debug.Assert((int) activeRowSpans[spannedColumnIndex] >= 0);
+                                    Debug.Assert((int)activeRowSpans[spannedColumnIndex] >= 0);
                                 }
 
                                 columnIndex = nextColumnIndex;
@@ -2570,18 +2583,18 @@ namespace Re_useable_Classes.Converters
 
                                 if (columnIndex < activeRowSpans.Count)
                                 {
-                                    Debug.Assert((double) columnStarts[columnIndex] >= columnStart);
+                                    Debug.Assert((double)columnStarts[columnIndex] >= columnStart);
 
-                                    if (Math.Abs((double) columnStarts[columnIndex] - columnStart) < epsilon)
+                                    if (Math.Abs((double)columnStarts[columnIndex] - columnStart) < epsilon)
                                     {
                                         // The new column may be in a spanned area
                                         while (columnIndex < activeRowSpans.Count &&
-                                               (int) activeRowSpans[columnIndex] > 0)
+                                               (int)activeRowSpans[columnIndex] > 0)
                                         {
-                                            activeRowSpans[columnIndex] = (int) activeRowSpans[columnIndex] - 1;
-                                            Debug.Assert((int) activeRowSpans[columnIndex] >= 0);
+                                            activeRowSpans[columnIndex] = (int)activeRowSpans[columnIndex] - 1;
+                                            Debug.Assert((int)activeRowSpans[columnIndex] >= 0);
                                             columnIndex++;
-                                            columnStart = (double) columnStarts[columnIndex];
+                                            columnStart = (double)columnStarts[columnIndex];
                                         }
                                     }
                                     // else: the new column does not start at the same time as a pre existing column
@@ -2678,13 +2691,13 @@ namespace Re_useable_Classes.Converters
             Debug.Assert(0 <= columnIndex && columnIndex <= columnStarts.Count);
             Debug.Assert(columnWidth > 0);
 
-            var columnStart = (double) columnStarts[columnIndex];
+            var columnStart = (double)columnStarts[columnIndex];
             int spannedColumnIndex = columnIndex + 1;
 
             while (spannedColumnIndex < columnStarts.Count &&
-                   (double) columnStarts[spannedColumnIndex] < columnStart + columnWidth && spannedColumnIndex != -1)
+                   (double)columnStarts[spannedColumnIndex] < columnStart + columnWidth && spannedColumnIndex != -1)
             {
-                if ((int) activeRowSpans[spannedColumnIndex] > 0)
+                if ((int)activeRowSpans[spannedColumnIndex] > 0)
                 {
                     // The current column should span this area, but something else is already spanning it
                     // Not analyzable
@@ -2847,7 +2860,7 @@ namespace Re_useable_Classes.Converters
 
             Debug.Assert(columnStarts != null);
             Debug.Assert(columnIndex < columnStarts.Count - 1);
-            Debug.Assert((double) columnStarts[columnIndex] >= 0);
+            Debug.Assert((double)columnStarts[columnIndex] >= 0);
             Debug.Assert(columnWidth > 0);
 
             int columnSpanningIndex = columnIndex;
@@ -2855,8 +2868,8 @@ namespace Re_useable_Classes.Converters
 
             while (columnSpanningValue < columnWidth && columnSpanningIndex < columnStarts.Count - 1)
             {
-                double subColumnWidth = (double) columnStarts[columnSpanningIndex + 1] -
-                                        (double) columnStarts[columnSpanningIndex];
+                double subColumnWidth = (double)columnStarts[columnSpanningIndex + 1] -
+                                        (double)columnStarts[columnSpanningIndex];
                 Debug.Assert(subColumnWidth > 0);
                 columnSpanningValue += subColumnWidth;
                 columnSpanningIndex++;
@@ -2885,8 +2898,8 @@ namespace Re_useable_Classes.Converters
 
             foreach (object t in columnStarts)
             {
-                Debug.Assert(columnStart < (double) t);
-                columnStart = (double) t;
+                Debug.Assert(columnStart < (double)t);
+                columnStart = (double)t;
             }
         }
 
@@ -2935,55 +2948,62 @@ namespace Re_useable_Classes.Converters
             IDictionaryEnumerator propertyEnumerator = localProperties.GetEnumerator();
             while (propertyEnumerator.MoveNext())
             {
-                switch ((string) propertyEnumerator.Key)
+                switch ((string)propertyEnumerator.Key)
                 {
                     case "font-family":
                         //  Convert from font-family value list into xaml FontFamily value
                         xamlElement.SetAttribute
                             (
                                 XamlFontFamily,
-                                (string) propertyEnumerator.Value);
+                                (string)propertyEnumerator.Value);
                         break;
+
                     case "font-style":
                         xamlElement.SetAttribute
                             (
                                 XamlFontStyle,
-                                (string) propertyEnumerator.Value);
+                                (string)propertyEnumerator.Value);
                         break;
+
                     case "font-variant":
                         //  Convert from font-variant into xaml property
                         break;
+
                     case "font-weight":
                         xamlElement.SetAttribute
                             (
                                 XamlFontWeight,
-                                (string) propertyEnumerator.Value);
+                                (string)propertyEnumerator.Value);
                         break;
+
                     case "font-size":
                         //  Convert from css size into FontSize
                         xamlElement.SetAttribute
                             (
                                 XamlFontSize,
-                                (string) propertyEnumerator.Value);
+                                (string)propertyEnumerator.Value);
                         break;
+
                     case "color":
                         SetPropertyValue
                             (
                                 xamlElement,
                                 TextElement.ForegroundProperty,
-                                (string) propertyEnumerator.Value);
+                                (string)propertyEnumerator.Value);
                         break;
+
                     case "background-color":
                         SetPropertyValue
                             (
                                 xamlElement,
                                 TextElement.BackgroundProperty,
-                                (string) propertyEnumerator.Value);
+                                (string)propertyEnumerator.Value);
                         break;
+
                     case "text-decoration-underline":
                         if (!isBlock)
                         {
-                            if ((string) propertyEnumerator.Value == "true")
+                            if ((string)propertyEnumerator.Value == "true")
                             {
                                 xamlElement.SetAttribute
                                     (
@@ -2992,6 +3012,7 @@ namespace Re_useable_Classes.Converters
                             }
                         }
                         break;
+
                     case "text-decoration-none":
                     case "text-decoration-overline":
                     case "text-decoration-line-through":
@@ -3001,6 +3022,7 @@ namespace Re_useable_Classes.Converters
                         {
                         }
                         break;
+
                     case "text-transform":
                         //  Convert from text-transform into xaml property
                         break;
@@ -3011,7 +3033,7 @@ namespace Re_useable_Classes.Converters
                             xamlElement.SetAttribute
                                 (
                                     XamlTextIndent,
-                                    (string) propertyEnumerator.Value);
+                                    (string)propertyEnumerator.Value);
                         }
                         break;
 
@@ -3021,7 +3043,7 @@ namespace Re_useable_Classes.Converters
                             xamlElement.SetAttribute
                                 (
                                     XamlTextAlignment,
-                                    (string) propertyEnumerator.Value);
+                                    (string)propertyEnumerator.Value);
                         }
                         break;
 
@@ -3032,111 +3054,135 @@ namespace Re_useable_Classes.Converters
 
                     case "margin-top":
                         marginSet = true;
-                        marginTop = (string) propertyEnumerator.Value;
+                        marginTop = (string)propertyEnumerator.Value;
                         break;
+
                     case "margin-right":
                         marginSet = true;
-                        marginRight = (string) propertyEnumerator.Value;
+                        marginRight = (string)propertyEnumerator.Value;
                         break;
+
                     case "margin-bottom":
                         marginSet = true;
-                        marginBottom = (string) propertyEnumerator.Value;
+                        marginBottom = (string)propertyEnumerator.Value;
                         break;
+
                     case "margin-left":
                         marginSet = true;
-                        marginLeft = (string) propertyEnumerator.Value;
+                        marginLeft = (string)propertyEnumerator.Value;
                         break;
 
                     case "padding-top":
                         paddingSet = true;
-                        paddingTop = (string) propertyEnumerator.Value;
-                        break;
-                    case "padding-right":
-                        paddingSet = true;
-                        paddingRight = (string) propertyEnumerator.Value;
-                        break;
-                    case "padding-bottom":
-                        paddingSet = true;
-                        paddingBottom = (string) propertyEnumerator.Value;
-                        break;
-                    case "padding-left":
-                        paddingSet = true;
-                        paddingLeft = (string) propertyEnumerator.Value;
+                        paddingTop = (string)propertyEnumerator.Value;
                         break;
 
-                        // NOTE: css names for elementary border styles have side indications in the middle (top/bottom/left/right)
-                        // In our internal notation we intentionally put them at the end - to unify processing in ParseCssRectangleProperty method
+                    case "padding-right":
+                        paddingSet = true;
+                        paddingRight = (string)propertyEnumerator.Value;
+                        break;
+
+                    case "padding-bottom":
+                        paddingSet = true;
+                        paddingBottom = (string)propertyEnumerator.Value;
+                        break;
+
+                    case "padding-left":
+                        paddingSet = true;
+                        paddingLeft = (string)propertyEnumerator.Value;
+                        break;
+
+                    // NOTE: css names for elementary border styles have side indications in the middle (top/bottom/left/right)
+                    // In our internal notation we intentionally put them at the end - to unify processing in ParseCssRectangleProperty method
                     case "border-color-top":
-                        borderColor = (string) propertyEnumerator.Value;
+                        borderColor = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-color-right":
-                        borderColor = (string) propertyEnumerator.Value;
+                        borderColor = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-color-bottom":
-                        borderColor = (string) propertyEnumerator.Value;
+                        borderColor = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-color-left":
-                        borderColor = (string) propertyEnumerator.Value;
+                        borderColor = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-style-top":
                     case "border-style-right":
                     case "border-style-bottom":
                     case "border-style-left":
                         //  Implement conversion from border style
                         break;
+
                     case "border-width-top":
                         borderThicknessSet = true;
-                        borderThicknessTop = (string) propertyEnumerator.Value;
+                        borderThicknessTop = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-width-right":
                         borderThicknessSet = true;
-                        borderThicknessRight = (string) propertyEnumerator.Value;
+                        borderThicknessRight = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-width-bottom":
                         borderThicknessSet = true;
-                        borderThicknessBottom = (string) propertyEnumerator.Value;
+                        borderThicknessBottom = (string)propertyEnumerator.Value;
                         break;
+
                     case "border-width-left":
                         borderThicknessSet = true;
-                        borderThicknessLeft = (string) propertyEnumerator.Value;
+                        borderThicknessLeft = (string)propertyEnumerator.Value;
                         break;
 
                     case "list-style-type":
                         if (xamlElement.LocalName == XamlList)
                         {
                             string markerStyle;
-                            switch (((string) propertyEnumerator.Value).ToLower())
+                            switch (((string)propertyEnumerator.Value).ToLower())
                             {
                                 case "diStockControl":
                                     markerStyle = XamlListMarkerStyleDisc;
                                     break;
+
                                 case "circle":
                                     markerStyle = XamlListMarkerStyleCircle;
                                     break;
+
                                 case "none":
                                     markerStyle = XamlListMarkerStyleNone;
                                     break;
+
                                 case "square":
                                     markerStyle = XamlListMarkerStyleSquare;
                                     break;
+
                                 case "box":
                                     markerStyle = XamlListMarkerStyleBox;
                                     break;
+
                                 case "lower-latin":
                                     markerStyle = XamlListMarkerStyleLowerLatin;
                                     break;
+
                                 case "upper-latin":
                                     markerStyle = XamlListMarkerStyleUpperLatin;
                                     break;
+
                                 case "lower-roman":
                                     markerStyle = XamlListMarkerStyleLowerRoman;
                                     break;
+
                                 case "upper-roman":
                                     markerStyle = XamlListMarkerStyleUpperRoman;
                                     break;
+
                                 case "decimal":
                                     markerStyle = XamlListMarkerStyleDecimal;
                                     break;
+
                                 default:
                                     markerStyle = XamlListMarkerStyleDisc;
                                     break;
@@ -3339,22 +3385,25 @@ namespace Re_useable_Classes.Converters
             localProperties = new Hashtable();
             switch (elementName)
             {
-                    // Character formatting
+                // Character formatting
                 case "i":
                 case "italic":
                 case "em":
                     localProperties["font-style"] = "italic";
                     break;
+
                 case "b":
                 case "bold":
                 case "strong":
                 case "dfn":
                     localProperties["font-weight"] = "bold";
                     break;
+
                 case "u":
                 case "underline":
                     localProperties["text-decoration-underline"] = "true";
                     break;
+
                 case "font":
                     string attributeValue = GetAttribute
                         (
@@ -3370,7 +3419,7 @@ namespace Re_useable_Classes.Converters
                             "size");
                     if (attributeValue != null)
                     {
-                        double fontSize = double.Parse(attributeValue)*(12.0/3.0);
+                        double fontSize = double.Parse(attributeValue) * (12.0 / 3.0);
                         if (fontSize < 1.0)
                         {
                             fontSize = 1.0;
@@ -3390,35 +3439,42 @@ namespace Re_useable_Classes.Converters
                         localProperties["color"] = attributeValue;
                     }
                     break;
+
                 case "samp":
                     localProperties["font-family"] = "Courier New"; // code CodePanel
                     localProperties["font-size"] = XamlFontSizeXxSmall;
                     localProperties["text-align"] = "Left";
                     break;
+
                 case "sub":
                     break;
+
                 case "sup":
                     break;
 
-                    // Hyperlinks
+                // Hyperlinks
                 case "a": // href, hreflang, urn, methods, rel, rev, title
                     //  Set default hyperlink properties
                     break;
+
                 case "acronym":
                     break;
 
-                    // Paragraph formatting:
+                // Paragraph formatting:
                 case "p":
                     //  Set default paragraph properties
                     break;
+
                 case "div":
                     //  Set default div properties
                     break;
+
                 case "pre":
                     localProperties["font-family"] = "Courier New"; // renders text in a fixed-width font
                     localProperties["font-size"] = XamlFontSizeXxSmall;
                     localProperties["text-align"] = "Left";
                     break;
+
                 case "blockquote":
                     localProperties["margin-left"] = "16";
                     break;
@@ -3426,25 +3482,31 @@ namespace Re_useable_Classes.Converters
                 case "h1":
                     localProperties["font-size"] = XamlFontSizeXxLarge;
                     break;
+
                 case "h2":
                     localProperties["font-size"] = XamlFontSizeXLarge;
                     break;
+
                 case "h3":
                     localProperties["font-size"] = XamlFontSizeLarge;
                     break;
+
                 case "h4":
                     localProperties["font-size"] = XamlFontSizeMedium;
                     break;
+
                 case "h5":
                     localProperties["font-size"] = XamlFontSizeSmall;
                     break;
+
                 case "h6":
                     localProperties["font-size"] = XamlFontSizeXSmall;
                     break;
-                    // List properties
+                // List properties
                 case "ul":
                     localProperties["list-style-type"] = "diStockControl";
                     break;
+
                 case "ol":
                     localProperties["list-style-type"] = "decimal";
                     break;
@@ -3502,11 +3564,11 @@ namespace Re_useable_Classes.Converters
 
                 return (from t in styleValues
                         select t.Split(':')
-                        into styleNameValue
-                        where styleNameValue.Length == 2
-                        where styleNameValue[0].Trim()
-                                               .ToLower() == attributeName
-                        select styleNameValue[1].Trim())
+                            into styleNameValue
+                            where styleNameValue.Length == 2
+                            where styleNameValue[0].Trim()
+                                                   .ToLower() == attributeName
+                            select styleNameValue[1].Trim())
                     .FirstOrDefault();
             }
 
@@ -3545,7 +3607,7 @@ namespace Re_useable_Classes.Converters
                             lengthAsString,
                             out length))
                     {
-                        length = (length*96.0)/72.0; // convert from points to pixels
+                        length = (length * 96.0) / 72.0; // convert from points to pixels
                     }
                     else
                     {

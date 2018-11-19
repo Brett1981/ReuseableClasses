@@ -410,6 +410,7 @@ namespace Re_useable_Classes.Converters
                                         styleValue,
                                         localProperties);
                                 break;
+
                             case "font-family":
                                 ParseCssFontFamily
                                     (
@@ -417,6 +418,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "font-size":
                                 ParseCssSize
                                     (
@@ -424,8 +426,9 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties,
                                         "font-size",
-                                        /*mustBeNonNegative:*/true);
+                                    /*mustBeNonNegative:*/true);
                                 break;
+
                             case "font-style":
                                 ParseCssFontStyle
                                     (
@@ -433,6 +436,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "font-weight":
                                 ParseCssFontWeight
                                     (
@@ -440,6 +444,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "font-variant":
                                 ParseCssFontVariant
                                     (
@@ -447,6 +452,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "line-height":
                                 ParseCssSize
                                     (
@@ -454,14 +460,17 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties,
                                         "line-height",
-                                        /*mustBeNonNegative:*/true);
+                                    /*mustBeNonNegative:*/true);
                                 break;
+
                             case "word-spacing":
                                 //  Implement word-spacing conversion
                                 break;
+
                             case "letter-spacing":
                                 //  Implement letter-spacing conversion
                                 break;
+
                             case "color":
                                 ParseCssColor
                                     (
@@ -495,6 +504,7 @@ namespace Re_useable_Classes.Converters
                                         localProperties,
                                         "background-color");
                                 break;
+
                             case "background":
                                 // TODO: need to parse composite background property
                                 ParseCssBackground
@@ -511,6 +521,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "vertical-align":
                                 ParseCssVerticalAlign
                                     (
@@ -518,6 +529,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "text-indent":
                                 ParseCssSize
                                     (
@@ -525,7 +537,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties,
                                         "text-indent",
-                                        /*mustBeNonNegative:*/false);
+                                    /*mustBeNonNegative:*/false);
                                 break;
 
                             case "width":
@@ -536,7 +548,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties,
                                         styleName,
-                                        /*mustBeNonNegative:*/true);
+                                    /*mustBeNonNegative:*/true);
                                 break;
 
                             case "margin": // top/right/bottom/left
@@ -547,6 +559,7 @@ namespace Re_useable_Classes.Converters
                                         localProperties,
                                         styleName);
                                 break;
+
                             case "margin-top":
                             case "margin-right":
                             case "margin-bottom":
@@ -557,7 +570,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties,
                                         styleName,
-                                        /*mustBeNonNegative:*/true);
+                                    /*mustBeNonNegative:*/true);
                                 break;
 
                             case "padding":
@@ -568,6 +581,7 @@ namespace Re_useable_Classes.Converters
                                         localProperties,
                                         styleName);
                                 break;
+
                             case "padding-top":
                             case "padding-right":
                             case "padding-bottom":
@@ -578,7 +592,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties,
                                         styleName,
-                                        /*mustBeNonNegative:*/true);
+                                    /*mustBeNonNegative:*/true);
                                 break;
 
                             case "border":
@@ -588,6 +602,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "border-style":
                             case "border-width":
                             case "border-color":
@@ -598,6 +613,7 @@ namespace Re_useable_Classes.Converters
                                         localProperties,
                                         styleName);
                                 break;
+
                             case "border-top":
                             case "border-right":
                             case "border-left":
@@ -605,8 +621,8 @@ namespace Re_useable_Classes.Converters
                                 //  Parse css border style
                                 break;
 
-                                // NOTE: css names for elementary border styles have side indications in the middle (top/bottom/left/right)
-                                // In our internal notation we intentionally put them at the end - to unify processing in ParseCssRectangleProperty method
+                            // NOTE: css names for elementary border styles have side indications in the middle (top/bottom/left/right)
+                            // In our internal notation we intentionally put them at the end - to unify processing in ParseCssRectangleProperty method
                             case "border-top-style":
                             case "border-right-style":
                             case "border-left-style":
@@ -633,6 +649,7 @@ namespace Re_useable_Classes.Converters
                                         ref nextIndex,
                                         localProperties);
                                 break;
+
                             case "clear":
                                 ParseCssClear
                                     (
@@ -1490,7 +1507,7 @@ namespace Re_useable_Classes.Converters
 
                 return "#" + red.ToString("X2") + green.ToString("X2") + blue.ToString("X2");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "gray";
             }

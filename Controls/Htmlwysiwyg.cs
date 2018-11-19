@@ -1,4 +1,6 @@
-﻿using System;
+﻿using mshtml;
+using Re_useable_Classes.Message_Helpers.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,8 +9,6 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using mshtml;
-using Re_useable_Classes.Message_Helpers.Forms;
 
 namespace Re_useable_Classes.Controls
 {
@@ -69,7 +69,7 @@ namespace Re_useable_Classes.Controls
             {
                 if (HtmlRenderer.Document != null)
                 {
-                    _doc = (IHTMLDocument2) HtmlRenderer.Document.DomDocument;
+                    _doc = (IHTMLDocument2)HtmlRenderer.Document.DomDocument;
                 }
             }
             catch (Exception ex)
@@ -151,7 +151,6 @@ namespace Re_useable_Classes.Controls
 
             string base64String = Convert.ToBase64String(byteBuffer);
             memoryStream.Dispose();
-
 
             return base64String;
         }
@@ -259,12 +258,12 @@ namespace Re_useable_Classes.Controls
             this._tsContainer.SuspendLayout();
             this._ts.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // _tsContainer
-            // 
-            // 
+            //
+            //
             // _tsContainer.ContentPanel
-            // 
+            //
             this._tsContainer.ContentPanel.Controls.Add(this.HtmlRenderer);
             this._tsContainer.ContentPanel.Margin = new System.Windows.Forms.Padding(4);
             this._tsContainer.ContentPanel.Size = new System.Drawing.Size
@@ -289,13 +288,13 @@ namespace Re_useable_Classes.Controls
                 510);
             this._tsContainer.TabIndex = 0;
             this._tsContainer.Text = "toolStripContainer1";
-            // 
+            //
             // _tsContainer.TopToolStripPanel
-            // 
+            //
             this._tsContainer.TopToolStripPanel.Controls.Add(this._ts);
-            // 
+            //
             // HtmlRenderer
-            // 
+            //
             this.HtmlRenderer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HtmlRenderer.Location = new System.Drawing.Point
                 (
@@ -321,9 +320,9 @@ namespace Re_useable_Classes.Controls
                 (
                 "About:blank",
                 System.UriKind.Absolute);
-            // 
+            //
             // _ts
-            // 
+            //
             this._ts.Dock = System.Windows.Forms.DockStyle.None;
             this._ts.Items.AddRange
                 (
@@ -370,9 +369,9 @@ namespace Re_useable_Classes.Controls
                 706,
                 27);
             this._ts.TabIndex = 0;
-            // 
+            //
             // _newTs
-            // 
+            //
             this._newTs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._newTs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._newTs.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -383,9 +382,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._newTs.Text = "&New";
             this._newTs.Click += new System.EventHandler(this.newTS_Click);
-            // 
+            //
             // _printToolStripButton
-            // 
+            //
             this._printToolStripButton.BackgroundImage = global::Re_useable_Classes.Properties.Resources.print;
             this._printToolStripButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -397,17 +396,17 @@ namespace Re_useable_Classes.Controls
                 24);
             this._printToolStripButton.Text = "&Print";
             this._printToolStripButton.Click += new System.EventHandler(this.printToolStripButton_Click);
-            // 
+            //
             // _tsSeparator1
-            // 
+            //
             this._tsSeparator1.Name = "_tsSeparator1";
             this._tsSeparator1.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _tsCut
-            // 
+            //
             this._tsCut.BackgroundImage = global::Re_useable_Classes.Properties.Resources.cut;
             this._tsCut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._tsCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -419,9 +418,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsCut.Text = "C&ut";
             this._tsCut.Click += new System.EventHandler(this.cutToolStripButton_Click);
-            // 
+            //
             // _tsCopy
-            // 
+            //
             this._tsCopy.BackgroundImage = global::Re_useable_Classes.Properties.Resources.copy;
             this._tsCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._tsCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -433,9 +432,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsCopy.Text = "&Copy";
             this._tsCopy.Click += new System.EventHandler(this.copyToolStripButton_Click);
-            // 
+            //
             // _tsPaste
-            // 
+            //
             this._tsPaste.BackgroundImage = global::Re_useable_Classes.Properties.Resources.paste;
             this._tsPaste.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this._tsPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -447,65 +446,65 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsPaste.Text = "&Paste";
             this._tsPaste.Click += new System.EventHandler(this.pasteToolStripButton_Click);
-            // 
+            //
             // _toolStripSeparator1
-            // 
+            //
             this._toolStripSeparator1.Name = "_toolStripSeparator1";
             this._toolStripSeparator1.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _toolStripSeparator2
-            // 
+            //
             this._toolStripSeparator2.Name = "_toolStripSeparator2";
             this._toolStripSeparator2.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _toolStripSeparator3
-            // 
+            //
             this._toolStripSeparator3.Name = "_toolStripSeparator3";
             this._toolStripSeparator3.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _toolStripSeparator4
-            // 
+            //
             this._toolStripSeparator4.Name = "_toolStripSeparator4";
             this._toolStripSeparator4.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _toolStripSeparator5
-            // 
+            //
             this._toolStripSeparator5.Name = "_toolStripSeparator5";
             this._toolStripSeparator5.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _toolStripSeparator6
-            // 
+            //
             this._toolStripSeparator6.Name = "_toolStripSeparator6";
             this._toolStripSeparator6.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _toolStripSeparator7
-            // 
+            //
             this._toolStripSeparator7.Name = "_toolStripSeparator7";
             this._toolStripSeparator7.Size = new System.Drawing.Size
                 (
                 6,
                 27);
-            // 
+            //
             // _tsFontSize
-            // 
+            //
             this._tsFontSize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this._tsFontSize.DropDownItems.AddRange
                 (
@@ -527,9 +526,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsFontSize.Text = "Font Size";
             this._tsFontSize.ButtonClick += new System.EventHandler(this.tsFontSize_ButtonClick);
-            // 
+            //
             // _toolStripMenuItem2
-            // 
+            //
             this._toolStripMenuItem2.Name = "_toolStripMenuItem2";
             this._toolStripMenuItem2.Size = new System.Drawing.Size
                 (
@@ -537,9 +536,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem2.Text = "1";
             this._toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
+            //
             // _toolStripMenuItem3
-            // 
+            //
             this._toolStripMenuItem3.Name = "_toolStripMenuItem3";
             this._toolStripMenuItem3.Size = new System.Drawing.Size
                 (
@@ -547,9 +546,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem3.Text = "2";
             this._toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
+            //
             // _toolStripMenuItem4
-            // 
+            //
             this._toolStripMenuItem4.Name = "_toolStripMenuItem4";
             this._toolStripMenuItem4.Size = new System.Drawing.Size
                 (
@@ -557,9 +556,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem4.Text = "3";
             this._toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
+            //
             // _toolStripMenuItem5
-            // 
+            //
             this._toolStripMenuItem5.Name = "_toolStripMenuItem5";
             this._toolStripMenuItem5.Size = new System.Drawing.Size
                 (
@@ -567,9 +566,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem5.Text = "4";
             this._toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
-            // 
+            //
             // _toolStripMenuItem6
-            // 
+            //
             this._toolStripMenuItem6.Name = "_toolStripMenuItem6";
             this._toolStripMenuItem6.Size = new System.Drawing.Size
                 (
@@ -577,9 +576,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem6.Text = "5";
             this._toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
-            // 
+            //
             // _toolStripMenuItem7
-            // 
+            //
             this._toolStripMenuItem7.Name = "_toolStripMenuItem7";
             this._toolStripMenuItem7.Size = new System.Drawing.Size
                 (
@@ -587,9 +586,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem7.Text = "6";
             this._toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
-            // 
+            //
             // _toolStripMenuItem8
-            // 
+            //
             this._toolStripMenuItem8.Name = "_toolStripMenuItem8";
             this._toolStripMenuItem8.Size = new System.Drawing.Size
                 (
@@ -597,9 +596,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._toolStripMenuItem8.Text = "7";
             this._toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
-            // 
+            //
             // _tsFontFamily
-            // 
+            //
             this._tsFontFamily.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this._tsFontFamily.Font = new System.Drawing.Font
                 (
@@ -613,9 +612,9 @@ namespace Re_useable_Classes.Controls
                 101,
                 24);
             this._tsFontFamily.Text = "Font Family";
-            // 
+            //
             // _tsBold
-            // 
+            //
             this._tsBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsBold.Image = global::Re_useable_Classes.Properties.Resources.bold;
             this._tsBold.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -626,9 +625,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsBold.Text = "&Bold";
             this._tsBold.Click += new System.EventHandler(this.tsBold_Click);
-            // 
+            //
             // _tsUnderline
-            // 
+            //
             this._tsUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsUnderline.Image = global::Re_useable_Classes.Properties.Resources.underline;
             this._tsUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -639,9 +638,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsUnderline.Text = "&Underline";
             this._tsUnderline.Click += new System.EventHandler(this.tsUnderline_Click);
-            // 
+            //
             // _tsItalics
-            // 
+            //
             this._tsItalics.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsItalics.Image = global::Re_useable_Classes.Properties.Resources.italic;
             this._tsItalics.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -652,9 +651,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsItalics.Text = "&Italic";
             this._tsItalics.Click += new System.EventHandler(this.tsItalics_Click);
-            // 
+            //
             // _tsLeft
-            // 
+            //
             this._tsLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsLeft.Image = global::Re_useable_Classes.Properties.Resources.align_left;
             this._tsLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -665,9 +664,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsLeft.Text = "Align Left";
             this._tsLeft.Click += new System.EventHandler(this.tsLeft_Click);
-            // 
+            //
             // _tsCenter
-            // 
+            //
             this._tsCenter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsCenter.Image = global::Re_useable_Classes.Properties.Resources.align_center;
             this._tsCenter.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -678,9 +677,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsCenter.Text = "Align Centre";
             this._tsCenter.Click += new System.EventHandler(this.tsCenter_Click);
-            // 
+            //
             // _tsJustify
-            // 
+            //
             this._tsJustify.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsJustify.Image = global::Re_useable_Classes.Properties.Resources.align_justify;
             this._tsJustify.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -691,9 +690,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsJustify.Text = "Distribute";
             this._tsJustify.Click += new System.EventHandler(this.tsJustify_Click);
-            // 
+            //
             // _tsRight
-            // 
+            //
             this._tsRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsRight.Image = global::Re_useable_Classes.Properties.Resources.align_right;
             this._tsRight.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -704,9 +703,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsRight.Text = "Align Right";
             this._tsRight.Click += new System.EventHandler(this.tsRight_Click);
-            // 
+            //
             // _tsIndent
-            // 
+            //
             this._tsIndent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsIndent.Image = global::Re_useable_Classes.Properties.Resources.increase_indent;
             this._tsIndent.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -717,9 +716,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsIndent.Text = "Increase Indent";
             this._tsIndent.Click += new System.EventHandler(this.tsIndent_Click);
-            // 
+            //
             // _tsOutdent
-            // 
+            //
             this._tsOutdent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsOutdent.Image = global::Re_useable_Classes.Properties.Resources.decrease_indent;
             this._tsOutdent.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -730,9 +729,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsOutdent.Text = "Decrease Indent";
             this._tsOutdent.Click += new System.EventHandler(this.tsOutdent_Click);
-            // 
+            //
             // _tsBullets
-            // 
+            //
             this._tsBullets.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsBullets.Image = global::Re_useable_Classes.Properties.Resources.bulleted_list;
             this._tsBullets.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -743,9 +742,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsBullets.Text = "Bullet Point";
             this._tsBullets.Click += new System.EventHandler(this.tsBullets_Click);
-            // 
+            //
             // _tsNumeric
-            // 
+            //
             this._tsNumeric.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsNumeric.Image = global::Re_useable_Classes.Properties.Resources.numbered_list;
             this._tsNumeric.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -756,9 +755,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsNumeric.Text = "Number Points";
             this._tsNumeric.Click += new System.EventHandler(this.tsNumeric_Click);
-            // 
+            //
             // _tsBackColor
-            // 
+            //
             this._tsBackColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsBackColor.Image = global::Re_useable_Classes.Properties.Resources.select_background_color;
             this._tsBackColor.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -769,9 +768,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsBackColor.Text = "Highlight ";
             this._tsBackColor.Click += new System.EventHandler(this.tsBackColor_Click);
-            // 
+            //
             // _tsTextColor
-            // 
+            //
             this._tsTextColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsTextColor.Image = global::Re_useable_Classes.Properties.Resources.select_color_text;
             this._tsTextColor.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -782,9 +781,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsTextColor.Text = "Font Colour";
             this._tsTextColor.Click += new System.EventHandler(this.tsTextColor_Click);
-            // 
+            //
             // _tsLink
-            // 
+            //
             this._tsLink.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsLink.Image = global::Re_useable_Classes.Properties.Resources.insert_link;
             this._tsLink.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -795,9 +794,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsLink.Text = "Add Hyperlink";
             this._tsLink.Click += new System.EventHandler(this.tsLink_Click);
-            // 
+            //
             // _tsRemoveLink
-            // 
+            //
             this._tsRemoveLink.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this._tsRemoveLink.Image = global::Re_useable_Classes.Properties.Resources.remove_link;
             this._tsRemoveLink.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -808,9 +807,9 @@ namespace Re_useable_Classes.Controls
                 24);
             this._tsRemoveLink.Text = "Remove Hyperlink";
             this._tsRemoveLink.Click += new System.EventHandler(this.tsRemoveLink_Click);
-            // 
+            //
             // Htmlwysiwyg
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF
                 (
                 8F,
@@ -1285,9 +1284,11 @@ namespace Re_useable_Classes.Controls
                 case "&Paste":
                     _tsPaste.PerformClick();
                     break;
+
                 case "&Copy":
                     _tsCopy.PerformClick();
                     break;
+
                 case "&Cut":
                     _tsCut.PerformClick();
                     break;
@@ -1385,7 +1386,7 @@ namespace Re_useable_Classes.Controls
 
                 //this.doc.write(pasteImgHtml);
 
-                var range = (IHTMLTxtRange) _doc.selection.createRange();
+                var range = (IHTMLTxtRange)_doc.selection.createRange();
                 range.pasteHTML(pasteImgHtml);
                 range.collapse(false);
                 range.@select();
@@ -1718,7 +1719,7 @@ namespace Re_useable_Classes.Controls
                     (
                         "FontName",
                         false,
-                        ((ToolStripLabel) sender).Text);
+                        ((ToolStripLabel)sender).Text);
             }
         }
 
@@ -1729,7 +1730,7 @@ namespace Re_useable_Classes.Controls
         {
             if (_edits)
             {
-                ((ToolStripLabel) sender).ActiveLinkColor = Color.PaleGoldenrod;
+                ((ToolStripLabel)sender).ActiveLinkColor = Color.PaleGoldenrod;
             }
         }
 
@@ -1740,7 +1741,7 @@ namespace Re_useable_Classes.Controls
         {
             if (_edits)
             {
-                ((ToolStripLabel) sender).ActiveLinkColor = Color.White;
+                ((ToolStripLabel)sender).ActiveLinkColor = Color.White;
             }
         }
 

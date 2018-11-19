@@ -12,7 +12,7 @@
         /// <returns>The number of megabytes.</returns>
         public static double ConvertBytesToMegabytes(long bytesIn)
         {
-            return (bytesIn/1024f)/1024f;
+            return (bytesIn / 1024f) / 1024f;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@
         /// <returns>The number of megabytes.</returns>
         public static double ConvertKilobytesToMegabytes(long kilobytesIn)
         {
-            return kilobytesIn/1024f;
+            return kilobytesIn / 1024f;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@
         /// <returns>The number of degrees Fahrenheit.</returns>
         public static double ConvertCelsiusToFahrenheit(double celsiusIn)
         {
-            return ((9.0/5.0)*celsiusIn) + 32;
+            return ((9.0 / 5.0) * celsiusIn) + 32;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
         /// <returns>The number of degrees Celsius.</returns>
         public static double ConvertFahrenheitToCelsius(double fahrenheitIn)
         {
-            return (5.0/9.0)*(fahrenheitIn - 32);
+            return (5.0 / 9.0) * (fahrenheitIn - 32);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@
         /// <returns>The number of kilometers.</returns>
         public static double ConvertMilesToKilometers(double milesIn)
         {
-            return milesIn*1.609344;
+            return milesIn * 1.609344;
         }
 
         /// <summary>
@@ -62,7 +62,7 @@
         /// <returns>The number of miles.</returns>
         public static double ConvertKilometersToMiles(double kilometersIn)
         {
-            return kilometersIn*0.621371192;
+            return kilometersIn * 0.621371192;
         }
     }
 }

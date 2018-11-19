@@ -20,40 +20,36 @@ namespace Re_useable_Classes.Converters
             if ((btnLstFrom.Equals("Meter/second") && (btnLstTo.Equals("Meter/minute"))))
             {
                 return txtFromValue.Contains('.')
-                           ? Convert.ToDouble(txtFromValue)*59.988
-                           : Convert.ToInt32(txtFromValue)*59.988;
+                           ? Convert.ToDouble(txtFromValue) * 59.988
+                           : Convert.ToInt32(txtFromValue) * 59.988;
             }
-
 
             if ((btnLstFrom.Equals("Meter/second") && (btnLstTo.Equals("Kilometer/hour"))))
             {
                 return txtFromValue.Contains('.')
-                           ? Convert.ToDouble(txtFromValue)*3.599712
-                           : Convert.ToInt32(txtFromValue)*3.599712;
+                           ? Convert.ToDouble(txtFromValue) * 3.599712
+                           : Convert.ToInt32(txtFromValue) * 3.599712;
             }
-
 
             if ((btnLstFrom.Equals("Meter/second") && (btnLstTo.Equals("Foot/second"))))
             {
                 return txtFromValue.Contains('.')
-                           ? Convert.ToDouble(txtFromValue)*3.28084
-                           : Convert.ToInt32(txtFromValue)*3.28084;
+                           ? Convert.ToDouble(txtFromValue) * 3.28084
+                           : Convert.ToInt32(txtFromValue) * 3.28084;
             }
-
 
             if ((btnLstFrom.Equals("Meter/second") && (btnLstTo.Equals("Foot/minute"))))
             {
                 return txtFromValue.Contains('.')
-                           ? Convert.ToDouble(txtFromValue)*196.8504
-                           : Convert.ToInt32(txtFromValue)*196.8504;
+                           ? Convert.ToDouble(txtFromValue) * 196.8504
+                           : Convert.ToInt32(txtFromValue) * 196.8504;
             }
-
 
             if ((btnLstFrom.Equals("Meter/second") && (btnLstTo.Equals("Miles/hour"))))
             {
                 return txtFromValue.Contains('.')
-                           ? Convert.ToDouble(txtFromValue)*2.237136
-                           : Convert.ToInt32(txtFromValue)*2.237136;
+                           ? Convert.ToDouble(txtFromValue) * 2.237136
+                           : Convert.ToInt32(txtFromValue) * 2.237136;
             }
             return 0;
         }

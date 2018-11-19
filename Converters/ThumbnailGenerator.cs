@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 namespace Re_useable_Classes.Converters
 {
     /*
-     * 
+     *
      * Exampl USE:
      *          const int thumbSize = 256;
                 Bitmap thumbnail = WindowsThumbnailProvider.GetThumbnail(
                    ((string[])(data))[0], thumbSize, thumbSize, ThumbnailOptions.None);
-                listView.ItemSettings.DefaultImage = thumbnail; 
+                listView.ItemSettings.DefaultImage = thumbnail;
      */
 
     [Flags]
@@ -28,7 +28,7 @@ namespace Re_useable_Classes.Converters
 
     public class WindowsThumbnailProvider
     {
-        private const string IShellItem2Guid = "7E9FB0D3-919F-4307-AB2E-9B1860310C93";
+        private const string ShellItem2Guid = "7E9FB0D3-919F-4307-AB2E-9B1860310C93";
 
         [DllImport("shell32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         internal static extern int SHCreateItemFromParsingName
@@ -125,7 +125,7 @@ namespace Re_useable_Classes.Converters
                                 Marshal.ReadInt32
                                     (
                                         srcData.Scan0,
-                                        (srcData.Stride*y) + (4*x)));
+                                        (srcData.Stride * y) + (4 * x)));
 
                         if (pixelColor.A > 0 & pixelColor.A < 255)
                         {
@@ -160,7 +160,7 @@ namespace Re_useable_Classes.Converters
             ThumbnailOptions options)
         {
             IShellItem nativeShellItem;
-            var shellItem2Guid = new Guid(IShellItem2Guid);
+            var shellItem2Guid = new Guid(ShellItem2Guid);
             int retCode = SHCreateItemFromParsingName
                 (
                     fileName,
@@ -178,7 +178,7 @@ namespace Re_useable_Classes.Converters
             nativeSize.Height = height;
 
             IntPtr hBitmap;
-            HResult hr = ((IShellItemImageFactory) nativeShellItem).GetImage
+            HResult hr = ((IShellItemImageFactory)nativeShellItem).GetImage
                 (
                     nativeSize,
                     options,
@@ -191,24 +191,24 @@ namespace Re_useable_Classes.Converters
                 return hBitmap;
             }
 
-            throw Marshal.GetExceptionForHR((int) hr);
+            throw Marshal.GetExceptionForHR((int)hr);
         }
 
         internal enum HResult
         {
             Ok = 0x0000,
             False = 0x0001,
-            InvalidArguments = unchecked((int) 0x80070057),
-            OutOfMemory = unchecked((int) 0x8007000E),
-            NoInterface = unchecked((int) 0x80004002),
-            Fail = unchecked((int) 0x80004005),
-            ElementNotFound = unchecked((int) 0x80070490),
-            TypeElementNotFound = unchecked((int) 0x8002802B),
-            NoObject = unchecked((int) 0x800401E5),
+            InvalidArguments = unchecked((int)0x80070057),
+            OutOfMemory = unchecked((int)0x8007000E),
+            NoInterface = unchecked((int)0x80004002),
+            Fail = unchecked((int)0x80004005),
+            ElementNotFound = unchecked((int)0x80070490),
+            TypeElementNotFound = unchecked((int)0x8002802B),
+            NoObject = unchecked((int)0x800401E5),
             Win32ErrorCanceled = 1223,
-            Canceled = unchecked((int) 0x800704C7),
-            ResourceInUse = unchecked((int) 0x800700AA),
-            AccessDenied = unchecked((int) 0x80030005)
+            Canceled = unchecked((int)0x800704C7),
+            ResourceInUse = unchecked((int)0x800700AA),
+            AccessDenied = unchecked((int)0x80030005)
         }
 
         [ComImport]
@@ -227,7 +227,7 @@ namespace Re_useable_Classes.Converters
 
             void GetDisplayName
                 (
-                SIGDN sigdnName,
+                Sigdn sigdnName,
                 out IntPtr ppszName);
 
             void GetAttributes
@@ -273,7 +273,7 @@ namespace Re_useable_Classes.Converters
         };
 
         [StructLayout(LayoutKind.Sequential)]
-        public struct RGBQUAD
+        public struct Rgbquad
         {
             public byte rgbBlue;
             public byte rgbGreen;
@@ -281,16 +281,16 @@ namespace Re_useable_Classes.Converters
             public byte rgbReserved;
         }
 
-        internal enum SIGDN : uint
+        internal enum Sigdn : uint
         {
-            NORMALDISPLAY = 0,
-            PARENTRELATIVEPARSING = 0x80018001,
-            PARENTRELATIVEFORADDRESSBAR = 0x8001c001,
-            DESKTOPABSOLUTEPARSING = 0x80028000,
-            PARENTRELATIVEEDITING = 0x80031001,
-            DESKTOPABSOLUTEEDITING = 0x8004c000,
-            FILESYSPATH = 0x80058000,
-            URL = 0x80068000
+            Normaldisplay = 0,
+            Parentrelativeparsing = 0x80018001,
+            Parentrelativeforaddressbar = 0x8001c001,
+            Desktopabsoluteparsing = 0x80028000,
+            Parentrelativeediting = 0x80031001,
+            Desktopabsoluteediting = 0x8004c000,
+            Filesyspath = 0x80058000,
+            Url = 0x80068000
         }
     }
 }
