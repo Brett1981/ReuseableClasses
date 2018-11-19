@@ -1,10 +1,10 @@
 ﻿/*
  * DirectoryWalker.cs
- * 
+ *
  * Some functions for getting lists (arrays) of file names from directories
  * and subdirectories. Recursive directory finding based on a single folder.
  * Useful for import code, etc.
- * 
+ *
  * */
 
 using System.Collections.Generic;

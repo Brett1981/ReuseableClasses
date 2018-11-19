@@ -1,10 +1,10 @@
 ﻿/*
  * Segment.cs
- * 
+ *
  * A C-Sharp program to divide a file of any number of lines (ending with newline
  * characters) and output segmented files of up to X bytes each. Use as a static
  * class in your project for maximum convenience.
- * 
+ *
  * */
 
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Re_useable_Classes.FileFolderTools
         /// <summary>
         ///     Number of bytes in 2 megabytes.
         /// </summary>
-        private const int _1Mb = 1*1000*Kibibyte;
+        private const int _1Mb = 1 * 1000 * Kibibyte;
 
         /// <summary>
         ///     Write segments of a file by calling this function with the file name

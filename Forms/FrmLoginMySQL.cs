@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Re_useable_Classes.Message_Helpers.Forms;
+using Re_useable_Classes.SQL;
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
-using Re_useable_Classes.Message_Helpers.Forms;
-using Re_useable_Classes.SQL;
 
 namespace Re_useable_Classes.Forms
 {
@@ -30,7 +30,7 @@ namespace Re_useable_Classes.Forms
             //if (AWindowsIdentity != null) txtUsername.Text = AWindowsIdentity.Name;
         }
 
-        private GetSQLServers ASqlServers { get; set; }
+        private GetSqlServers ASqlServers { get; set; }
         private GetDatabases ADatabases { get; set; }
         private WindowsIdentity AWindowsIdentity { get; set; }
         public bool AConnectionIsOpen { get; set; }

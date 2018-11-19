@@ -21,7 +21,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
         private int _mHeight;
         private int _mWidth;
 
-        #endregion
+        #endregion Variables & Constants
 
         #region Enumerators
 
@@ -57,7 +57,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
             None = 3
         }
 
-        #endregion
+        #endregion Enumerators
 
         #region Events
 
@@ -113,8 +113,8 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                 //Set location from parent
                 Location = new Point
                     (
-                    ((_mParent.Width/2) - (Width/2)),
-                    ((_mParent.Height/2) - (Height/2)));
+                    ((_mParent.Width / 2) - (Width / 2)),
+                    ((_mParent.Height / 2) - (Height / 2)));
             }
         }
 
@@ -131,10 +131,12 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                     _mMessageResult = MessageBoxResult.None;
                     _newMessageBox.Dispose();
                     break;
+
                 case MessageBoxButtons.YesNo:
                     _mMessageResult = MessageBoxResult.No;
                     _newMessageBox.Dispose();
                     break;
+
                 default:
                     _mMessageResult = MessageBoxResult.None;
                     _newMessageBox.Dispose();
@@ -155,14 +157,17 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                     _mMessageResult = MessageBoxResult.Ok;
                     _newMessageBox.Dispose();
                     break;
+
                 case MessageBoxButtons.OkCancel:
                     _mMessageResult = MessageBoxResult.Ok;
                     _newMessageBox.Dispose();
                     break;
+
                 case MessageBoxButtons.YesNo:
                     _mMessageResult = MessageBoxResult.Yes;
                     _newMessageBox.Dispose();
                     break;
+
                 default:
                     _mMessageResult = MessageBoxResult.Ok;
                     _newMessageBox.Dispose();
@@ -181,7 +186,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
             SetBoxHeight();
         }
 
-        #endregion
+        #endregion Events
 
         #region Methods
 
@@ -301,7 +306,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                 {
                     // Get the size given the string and the font
                     intHeight =
-                        (int) Math.Round
+                        (int)Math.Round
                                   (
                                       g.MeasureString
                                   (
@@ -361,27 +366,35 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                 case MessageBoxIcon.Asterisk:
                     pbMIcon.Image = SystemIcons.Asterisk.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Error:
                     pbMIcon.Image = SystemIcons.Error.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Exclamation:
                     pbMIcon.Image = SystemIcons.Exclamation.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Hand:
                     pbMIcon.Image = SystemIcons.Hand.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Information:
                     pbMIcon.Image = SystemIcons.Information.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Question:
                     pbMIcon.Image = SystemIcons.Question.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Stop:
                     pbMIcon.Image = SystemIcons.Shield.ToBitmap();
                     break;
+
                 case MessageBoxIcon.Warning:
                     pbMIcon.Image = SystemIcons.Warning.ToBitmap();
                     break;
+
                 default:
                     pbMIcon.Image = SystemIcons.Information.ToBitmap();
                     break;
@@ -399,14 +412,17 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                     btnTwo.Text = "Ok";
                     btnTwo.Left = btnOne.Left;
                     break;
+
                 case MessageBoxButtons.OkCancel:
                     btnOne.Text = "Cancel";
                     btnTwo.Text = "Ok";
                     break;
+
                 case MessageBoxButtons.YesNo:
                     btnOne.Text = "No";
                     btnTwo.Text = "Yes";
                     break;
+
                 default:
                     btnOne.Visible = false;
                     btnTwo.Text = "Ok";
@@ -415,6 +431,6 @@ namespace Re_useable_Classes.Message_Helpers.Forms
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }

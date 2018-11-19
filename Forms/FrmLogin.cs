@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Re_useable_Classes.SQL;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
-using Re_useable_Classes.SQL;
 
 namespace Re_useable_Classes.Forms
 {
@@ -17,12 +17,12 @@ namespace Re_useable_Classes.Forms
             InitializeComponent();
             Text = frmTitle;
             Icon = frmIcon;
-            aformtoConnect = afrmtoLoad;
+            AformtoConnect = afrmtoLoad;
             AConnectionIsOpen = false;
             SplashScreen.SplashScreen.SetStatus("Initialising Form..");
-            ASqlServers = new GetSQLServers();
+            ASqlServers = new GetSqlServers();
             SplashScreen.SplashScreen.SetStatus("Preparing SQL Servers...");
-            ASqlServers.GetSqlServers();
+            ASqlServers.aGetSqlServers();
             SplashScreen.SplashScreen.SetStatus("Retrieve Windows User....");
             AWindowsIdentity = WindowsIdentity.GetCurrent();
             SplashScreen.SplashScreen.SetStatus("Preparing Application.....");
@@ -32,9 +32,9 @@ namespace Re_useable_Classes.Forms
             }
         }
 
-        private Form aformtoConnect { get; set; }
+        private Form AformtoConnect { get; set; }
         private Connection AConnection { get; set; }
-        private GetSQLServers ASqlServers { get; set; }
+        private GetSqlServers ASqlServers { get; set; }
         private GetDatabases ADatabases { get; set; }
         private WindowsIdentity AWindowsIdentity { get; set; }
         public bool AConnectionIsOpen { get; set; }
@@ -45,7 +45,7 @@ namespace Re_useable_Classes.Forms
             CancelEventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            cmbServer.DataSource = ASqlServers.GetSqlServers();
+            cmbServer.DataSource = ASqlServers.aGetSqlServers();
             Cursor = Cursors.Default;
         }
 
@@ -67,6 +67,7 @@ namespace Re_useable_Classes.Forms
                             "",
                             "WIN");
                     break;
+
                 default:
                     AConnection = new Connection();
                     AConnection.CreateConnection
@@ -131,6 +132,7 @@ namespace Re_useable_Classes.Forms
                             cmbDataBase.Text,
                             "WIN");
                     break;
+
                 default:
                     AConnection = new Connection();
                     AConnection.CreateConnection
@@ -146,8 +148,8 @@ namespace Re_useable_Classes.Forms
             cmbDataBase.DataSource = ADatabases.GetSqlDataBases(AConnection);
             AConnectionIsOpen = AConnection.IsConnectionOpen();
             Cursor = Cursors.Default;
-            aformtoConnect.Show();
-            this.Hide();
+            AformtoConnect.Show();
+            Hide();
         }
     }
 }

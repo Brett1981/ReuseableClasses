@@ -13,11 +13,11 @@ namespace Re_useable_Classes.Printing
         private static StringFormat _strFormat; // Holds content of a TextBox Cell to write by DrawString
         private static StringFormat _strFormatComboBox; // Holds content of a Boolean Cell to write by DrawImage
         private static Button _cellButton; // Holds the Contents of Button Cell
-        private static CheckBox _cellCheckBox; // Holds the Contents of CheckBox Cell 
+        private static CheckBox _cellCheckBox; // Holds the Contents of CheckBox Cell
         private static ComboBox _cellComboBox; // Holds the Contents of ComboBox Cell
 
         private static int _totalWidth; // Summation of Columns widths
-        private static int _rowPos; // Position of currently printing row 
+        private static int _rowPos; // Position of currently printing row
         private static bool _newPage; // Indicates if a new page reached
         private static int _pageNo; // Number of pages to print
         private static readonly ArrayList ColumnLefts = new ArrayList(); // Left Coordinate of Columns
@@ -26,20 +26,20 @@ namespace Re_useable_Classes.Printing
         private static int _cellHeight; // Height of DataGrid Cell
         private static int _rowsPerPage; // Number of Rows per Page
 
-        private static readonly PrintDocument printDoc =
+        private static readonly PrintDocument PrintDoc =
             new PrintDocument(); // PrintDocumnet Object used for printing
 
         private static string _printTitle = ""; // Header of pages
         private static DataGridView _dgv; // Holds DataGridView Object to print its contents
         private static List<string> _selectedColumns = new List<string>(); // The Columns Selected by user to print.
 
-        private static readonly List<string> _availableColumns = new List<string>();
-                                             // All Columns avaiable in DataGrid 
+        private static readonly List<string> AvailableColumns = new List<string>();
+        // All Columns avaiable in DataGrid
 
-        private static bool _printAllRows = true; // True = print all rows,  False = print selected rows    
+        private static bool _printAllRows = true; // True = print all rows,  False = print selected rows
 
         private static bool _fitToPageWidth = true;
-        // True = Fits selected columns to page width ,  False = Print columns as showed    
+        // True = Fits selected columns to page width ,  False = Print columns as showed
 
         private static int _headerHeight;
 
@@ -51,15 +51,15 @@ namespace Re_useable_Classes.Printing
                 _dgv = dgv1;
 
                 // Getting all Coulmns Names in the DataGridView
-                _availableColumns.Clear();
+                AvailableColumns.Clear();
                 foreach (DataGridViewColumn c in _dgv.Columns.Cast<DataGridViewColumn>()
                                                      .Where(c => c.Visible))
                 {
-                    _availableColumns.Add(c.HeaderText);
+                    AvailableColumns.Add(c.HeaderText);
                 }
 
                 // Showing the PrintOption Form
-                var dlg = new PrintOptions(_availableColumns);
+                var dlg = new PrintOptions(AvailableColumns);
                 if (dlg.ShowDialog() != DialogResult.OK)
                 {
                     return;
@@ -74,26 +74,26 @@ namespace Re_useable_Classes.Printing
 
                 var ppvw = new PrintPreviewDialog
                            {
-                               Document = printDoc
+                               Document = PrintDoc
                            };
 
                 // Showing the Print Preview Page
-                printDoc.BeginPrint += PrintDoc_BeginPrint;
-                printDoc.PrintPage += PrintDoc_PrintPage;
-                printDoc.DefaultPageSettings.Landscape = true;
+                PrintDoc.BeginPrint += PrintDoc_BeginPrint;
+                PrintDoc.PrintPage += PrintDoc_PrintPage;
+                PrintDoc.DefaultPageSettings.Landscape = true;
                 ppvw.TopMost = true;
 
                 if (ppvw.ShowDialog() != DialogResult.OK)
                 {
-                    printDoc.BeginPrint -= PrintDoc_BeginPrint;
-                    printDoc.PrintPage -= PrintDoc_PrintPage;
+                    PrintDoc.BeginPrint -= PrintDoc_BeginPrint;
+                    PrintDoc.PrintPage -= PrintDoc_PrintPage;
                     return;
                 }
 
                 // Printing the Documnet
-                printDoc.Print();
-                printDoc.BeginPrint -= PrintDoc_BeginPrint;
-                printDoc.PrintPage -= PrintDoc_PrintPage;
+                PrintDoc.Print();
+                PrintDoc.BeginPrint -= PrintDoc_BeginPrint;
+                PrintDoc.PrintPage -= PrintDoc_PrintPage;
             }
             catch (Exception ex)
             {
@@ -189,18 +189,18 @@ namespace Re_useable_Classes.Printing
                         int tmpWidth;
                         if (_fitToPageWidth)
                         {
-                            tmpWidth = (int) (Math.Floor
+                            tmpWidth = (int)(Math.Floor
                                                  (
-                                                     gridCol.Width/
-                                                     (double) _totalWidth*_totalWidth*
-                                                     (e.MarginBounds.Width/(double) _totalWidth)));
+                                                     gridCol.Width /
+                                                     (double)_totalWidth * _totalWidth *
+                                                     (e.MarginBounds.Width / (double)_totalWidth)));
                         }
                         else
                         {
                             tmpWidth = gridCol.Width;
                         }
 
-                        _headerHeight = (int) (e.Graphics.MeasureString
+                        _headerHeight = (int)(e.Graphics.MeasureString
                                                   (
                                                       gridCol.HeaderText,
                                                       gridCol.InheritedStyle.Font,
@@ -309,9 +309,9 @@ namespace Re_useable_Classes.Printing
                                     new SolidBrush(Color.LightGray),
                                     new Rectangle
                                         (
-                                        (int) ColumnLefts[i],
+                                        (int)ColumnLefts[i],
                                         tmpTop,
-                                        (int) ColumnWidths[i],
+                                        (int)ColumnWidths[i],
                                         _headerHeight));
 
                             e.Graphics.DrawRectangle
@@ -319,9 +319,9 @@ namespace Re_useable_Classes.Printing
                                     Pens.Black,
                                     new Rectangle
                                         (
-                                        (int) ColumnLefts[i],
+                                        (int)ColumnLefts[i],
                                         tmpTop,
-                                        (int) ColumnWidths[i],
+                                        (int)ColumnWidths[i],
                                         _headerHeight));
 
                             e.Graphics.DrawString
@@ -331,9 +331,9 @@ namespace Re_useable_Classes.Printing
                                     new SolidBrush(gridCol.InheritedStyle.ForeColor),
                                     new RectangleF
                                         (
-                                        (int) ColumnLefts[i],
+                                        (int)ColumnLefts[i],
                                         tmpTop,
-                                        (int) ColumnWidths[i],
+                                        (int)ColumnWidths[i],
                                         _headerHeight),
                                     _strFormat);
                             i++;
@@ -350,7 +350,7 @@ namespace Re_useable_Classes.Printing
                                                      select cel)
                     {
                         // For the TextBox Column
-                        switch (((Type) ColumnTypes[i]).Name)
+                        switch (((Type)ColumnTypes[i]).Name)
                         {
                             case "DataGridViewLinkColumn":
                             case "DataGridViewTextBoxColumn":
@@ -361,152 +361,156 @@ namespace Re_useable_Classes.Printing
                                         new SolidBrush(cel.InheritedStyle.ForeColor),
                                         new RectangleF
                                             (
-                                            (int) ColumnLefts[i],
+                                            (int)ColumnLefts[i],
                                             tmpTop,
-                                            (int) ColumnWidths[i],
+                                            (int)ColumnWidths[i],
                                             _cellHeight),
                                         _strFormat);
                                 break;
+
                             case "DataGridViewButtonColumn":
-                            {
-                                _cellButton.Text = cel.Value.ToString();
-                                _cellButton.Size = new Size
-                                    (
-                                    (int) ColumnWidths[i],
-                                    _cellHeight);
-                                var bmp = new Bitmap
-                                    (
-                                    _cellButton.Width,
-                                    _cellButton.Height);
-                                _cellButton.DrawToBitmap
-                                    (
-                                        bmp,
-                                        new Rectangle
-                                            (
-                                            0,
-                                            0,
-                                            bmp.Width,
-                                            bmp.Height));
-                                e.Graphics.DrawImage
-                                    (
-                                        bmp,
-                                        new Point
-                                            (
-                                            (int) ColumnLefts[i],
-                                            tmpTop));
-                            }
+                                {
+                                    _cellButton.Text = cel.Value.ToString();
+                                    _cellButton.Size = new Size
+                                        (
+                                        (int)ColumnWidths[i],
+                                        _cellHeight);
+                                    var bmp = new Bitmap
+                                        (
+                                        _cellButton.Width,
+                                        _cellButton.Height);
+                                    _cellButton.DrawToBitmap
+                                        (
+                                            bmp,
+                                            new Rectangle
+                                                (
+                                                0,
+                                                0,
+                                                bmp.Width,
+                                                bmp.Height));
+                                    e.Graphics.DrawImage
+                                        (
+                                            bmp,
+                                            new Point
+                                                (
+                                                (int)ColumnLefts[i],
+                                                tmpTop));
+                                }
                                 break;
+
                             case "DataGridViewCheckBoxColumn":
-                            {
-                                _cellCheckBox.Size = new Size
-                                    (
-                                    14,
-                                    14);
-                                _cellCheckBox.Checked = (bool) cel.Value;
-                                var bmp = new Bitmap
-                                    (
-                                    (int) ColumnWidths[i],
-                                    _cellHeight);
-                                Graphics tmpGraphics = Graphics.FromImage(bmp);
-                                tmpGraphics.FillRectangle
-                                    (
-                                        Brushes.White,
-                                        new Rectangle
-                                            (
-                                            0,
-                                            0,
-                                            bmp.Width,
-                                            bmp.Height));
-                                _cellCheckBox.DrawToBitmap
-                                    (
-                                        bmp,
-                                        new Rectangle
-                                            (
-                                            (bmp.Width - _cellCheckBox.Width)/2,
-                                            (bmp.Height - _cellCheckBox.Height)/2,
-                                            _cellCheckBox.Width,
-                                            _cellCheckBox.Height));
-                                e.Graphics.DrawImage
-                                    (
-                                        bmp,
-                                        new Point
-                                            (
-                                            (int) ColumnLefts[i],
-                                            tmpTop));
-                            }
+                                {
+                                    _cellCheckBox.Size = new Size
+                                        (
+                                        14,
+                                        14);
+                                    _cellCheckBox.Checked = (bool)cel.Value;
+                                    var bmp = new Bitmap
+                                        (
+                                        (int)ColumnWidths[i],
+                                        _cellHeight);
+                                    Graphics tmpGraphics = Graphics.FromImage(bmp);
+                                    tmpGraphics.FillRectangle
+                                        (
+                                            Brushes.White,
+                                            new Rectangle
+                                                (
+                                                0,
+                                                0,
+                                                bmp.Width,
+                                                bmp.Height));
+                                    _cellCheckBox.DrawToBitmap
+                                        (
+                                            bmp,
+                                            new Rectangle
+                                                (
+                                                (bmp.Width - _cellCheckBox.Width) / 2,
+                                                (bmp.Height - _cellCheckBox.Height) / 2,
+                                                _cellCheckBox.Width,
+                                                _cellCheckBox.Height));
+                                    e.Graphics.DrawImage
+                                        (
+                                            bmp,
+                                            new Point
+                                                (
+                                                (int)ColumnLefts[i],
+                                                tmpTop));
+                                }
                                 break;
+
                             case "DataGridViewComboBoxColumn":
-                            {
-                                _cellComboBox.Size = new Size
-                                    (
-                                    (int) ColumnWidths[i],
-                                    _cellHeight);
-                                var bmp = new Bitmap
-                                    (
-                                    _cellComboBox.Width,
-                                    _cellComboBox.Height);
-                                _cellComboBox.DrawToBitmap
-                                    (
-                                        bmp,
-                                        new Rectangle
-                                            (
-                                            0,
-                                            0,
-                                            bmp.Width,
-                                            bmp.Height));
-                                e.Graphics.DrawImage
-                                    (
-                                        bmp,
-                                        new Point
-                                            (
-                                            (int) ColumnLefts[i],
-                                            tmpTop));
-                                e.Graphics.DrawString
-                                    (
-                                        cel.Value.ToString(),
-                                        cel.InheritedStyle.Font,
-                                        new SolidBrush(cel.InheritedStyle.ForeColor),
-                                        new RectangleF
-                                            (
-                                            (int) ColumnLefts[i] + 1,
-                                            tmpTop,
-                                            (int) ColumnWidths[i]
-                                            - 16,
-                                            _cellHeight),
-                                        _strFormatComboBox);
-                            }
+                                {
+                                    _cellComboBox.Size = new Size
+                                        (
+                                        (int)ColumnWidths[i],
+                                        _cellHeight);
+                                    var bmp = new Bitmap
+                                        (
+                                        _cellComboBox.Width,
+                                        _cellComboBox.Height);
+                                    _cellComboBox.DrawToBitmap
+                                        (
+                                            bmp,
+                                            new Rectangle
+                                                (
+                                                0,
+                                                0,
+                                                bmp.Width,
+                                                bmp.Height));
+                                    e.Graphics.DrawImage
+                                        (
+                                            bmp,
+                                            new Point
+                                                (
+                                                (int)ColumnLefts[i],
+                                                tmpTop));
+                                    e.Graphics.DrawString
+                                        (
+                                            cel.Value.ToString(),
+                                            cel.InheritedStyle.Font,
+                                            new SolidBrush(cel.InheritedStyle.ForeColor),
+                                            new RectangleF
+                                                (
+                                                (int)ColumnLefts[i] + 1,
+                                                tmpTop,
+                                                (int)ColumnWidths[i]
+                                                - 16,
+                                                _cellHeight),
+                                            _strFormatComboBox);
+                                }
                                 break;
+
                             case "DataGridViewImageColumn":
-                            {
-                                var celSize = new Rectangle
-                                    (
-                                    (int) ColumnLefts[i],
-                                    tmpTop,
-                                    (int) ColumnWidths[i],
-                                    _cellHeight);
-                                Size imgSize = ((Image) (cel.FormattedValue)).Size;
-                                e.Graphics.DrawImage
-                                    (
-                                        (Image) cel.FormattedValue,
-                                        new Rectangle
-                                            (
-                                            (int) ColumnLefts[i] + (celSize.Width - imgSize.Width)/2,
-                                            tmpTop + (celSize.Height - imgSize.Height)/2,
-                                            ((Image) (cel.FormattedValue)).Width,
-                                            ((Image) (cel.FormattedValue)).Height));
-                            }
+                                {
+                                    var celSize = new Rectangle
+                                        (
+                                        (int)ColumnLefts[i],
+                                        tmpTop,
+                                        (int)ColumnWidths[i],
+                                        _cellHeight);
+                                    Size imgSize = ((Image)(cel.FormattedValue)).Size;
+                                    e.Graphics.DrawImage
+                                        (
+                                            (Image)cel.FormattedValue,
+                                            new Rectangle
+                                                (
+                                                (int)ColumnLefts[i] + (celSize.Width - imgSize.Width) / 2,
+                                                tmpTop + (celSize.Height - imgSize.Height) / 2,
+                                                ((Image)(cel.FormattedValue)).Width,
+                                                ((Image)(cel.FormattedValue)).Height));
+                                }
                                 break;
                         }
 
-                        // Drawing Cells Borders 
+                        // Drawing Cells Borders
                         e.Graphics.DrawRectangle
                             (
                                 Pens.Black,
                                 new Rectangle
                                     (
-                                    (int) ColumnLefts[i],
+                                    (int)ColumnLefts[i],
                                     tmpTop,
-                                    (int) ColumnWidths[i],
+                                    (int)ColumnWidths[i],
                                     _cellHeight));
 
                         i++;
@@ -571,7 +575,7 @@ namespace Re_useable_Classes.Printing
 
             // Writing the Page Number on the Bottom of Page
             string pageNum = _pageNo + " of " +
-                             Math.Ceiling(cnt/rowsPerPage);
+                             Math.Ceiling(cnt / rowsPerPage);
 
             e.Graphics.DrawString
                 (
@@ -584,7 +588,7 @@ namespace Re_useable_Classes.Printing
                                                    pageNum,
                                                    _dgv.Font,
                                                    e.MarginBounds.Width)
-                                            .Width)/2,
+                                            .Width) / 2,
                     e.MarginBounds.Top +
                     e.MarginBounds.Height + 31);
         }

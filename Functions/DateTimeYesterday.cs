@@ -16,7 +16,6 @@ namespace Re_useable_Classes.Functions
         }
     }
 
-
     /// <summary>
     ///     A static class that stores our DateTime helper methods.
     /// </summary>

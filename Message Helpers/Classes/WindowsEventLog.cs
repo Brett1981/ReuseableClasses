@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Re_useable_Classes.Message_Helpers.Classes
+﻿namespace Re_useable_Classes.Message_Helpers.Classes
 {
     public class WindowsEventLog
     {
@@ -22,12 +17,12 @@ namespace Re_useable_Classes.Message_Helpers.Classes
             eventLog.Source = appName;
 
             // Create an event ID to add to the event log
-            int eventID = 8;
+            int eventId = 8;
 
             // Write an entry to the event log.
             eventLog.WriteEntry(message,
                                 System.Diagnostics.EventLogEntryType.Error,
-                                eventID);
+                                eventId);
 
             // Close the Event Log
             eventLog.Close();

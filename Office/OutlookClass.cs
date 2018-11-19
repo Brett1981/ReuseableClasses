@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Outlook;
 using Application = Microsoft.Office.Interop.Outlook.Application;
 
 namespace Re_useable_Classes.Office
@@ -16,39 +16,39 @@ namespace Re_useable_Classes.Office
 
         public DataTable GetAllCalendarItems()
         {
-            var CodePanel = new DataTable(); //CodePanel Data
-            CodePanel.Columns.Add
+            var codePanel = new DataTable(); //CodePanel Data
+            codePanel.Columns.Add
                 (
                     "Subject",
-                    typeof (string));
-            CodePanel.Columns.Add
+                    typeof(string));
+            codePanel.Columns.Add
                 (
                     "Location",
-                    typeof (string));
-            CodePanel.Columns.Add
+                    typeof(string));
+            codePanel.Columns.Add
                 (
                     "StartTime",
-                    typeof (DateTime));
-            CodePanel.Columns.Add
+                    typeof(DateTime));
+            codePanel.Columns.Add
                 (
                     "EndTime",
-                    typeof (DateTime));
-            CodePanel.Columns.Add
+                    typeof(DateTime));
+            codePanel.Columns.Add
                 (
                     "StartDate",
-                    typeof (DateTime));
-            CodePanel.Columns.Add
+                    typeof(DateTime));
+            codePanel.Columns.Add
                 (
                     "EndDate",
-                    typeof (DateTime));
-            CodePanel.Columns.Add
+                    typeof(DateTime));
+            codePanel.Columns.Add
                 (
                     "AllDayEvent",
-                    typeof (bool));
-            CodePanel.Columns.Add
+                    typeof(bool));
+            codePanel.Columns.Add
                 (
                     "Body",
-                    typeof (string));
+                    typeof(string));
 
             ListViewContacts = new ListView();
             OApp = new Application();
@@ -59,7 +59,7 @@ namespace Re_useable_Classes.Office
             // DataTable CodePanel = new DataTable();
             foreach (AppointmentItem item in OutlookCalendarItems)
             {
-                DataRow row = CodePanel.NewRow();
+                DataRow row = codePanel.NewRow();
                 row["Subject"] = item.Subject;
                 row["Location"] = item.Location;
                 row["StartTime"] = item.Start.TimeOfDay.ToString();
@@ -68,10 +68,10 @@ namespace Re_useable_Classes.Office
                 row["EndDate"] = item.End.Date;
                 row["AllDayEvent"] = item.AllDayEvent;
                 row["Body"] = item.Body;
-                CodePanel.Rows.Add(row);
+                codePanel.Rows.Add(row);
             }
-            CodePanel.AcceptChanges();
-            foreach (DataRow dr in CodePanel.Rows)
+            codePanel.AcceptChanges();
+            foreach (DataRow dr in codePanel.Rows)
             {
                 var lvi = new ListViewItem(dr["Subject"].ToString());
 
@@ -83,12 +83,11 @@ namespace Re_useable_Classes.Office
                 lvi.SubItems.Add(dr["AllDayEvent"].ToString());
                 lvi.SubItems.Add(dr["Body"].ToString());
 
-
                 ListViewContacts.Items.Add(lvi);
             }
             OApp = null;
             ONs = null;
-            return CodePanel;
+            return codePanel;
         }
     }
 }

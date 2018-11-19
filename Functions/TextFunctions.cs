@@ -103,12 +103,12 @@ namespace Re_useable_Classes.Functions
             if (historyText != null)
             {
                 for (int x = 1;
-                     ((x*14) < aString.Length);
+                     ((x * 14) < aString.Length);
                      x++)
                 {
                     historyText = historyText.Insert
                         (
-                            (x*15) - 1,
+                            (x * 15) - 1,
                             "\n");
                 }
             }

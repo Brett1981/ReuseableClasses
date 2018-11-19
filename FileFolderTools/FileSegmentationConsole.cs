@@ -1,9 +1,9 @@
 ﻿/*
  * FileSegmentationConsole.cs
- * 
+ *
  * A C-Sharp program to divide a file of any number of lines (ending with newline
  * characters) and output segmented files of up to X bytes each.
- * 
+ *
  * */
 
 using System;
@@ -35,7 +35,7 @@ namespace Re_useable_Classes.FileFolderTools
         /// <summary>
         ///     Number of bytes in 2 megabytes.
         /// </summary>
-        private const int _2Mb = 2*1000*Kibibyte;
+        private const int _2Mb = 2 * 1000 * Kibibyte;
 
         /// <summary>
         ///     Begin the SegmentFile program. Pass this program the file name of a file of lines that

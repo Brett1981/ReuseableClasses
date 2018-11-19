@@ -27,7 +27,6 @@ namespace Re_useable_Classes.Functions
                                   .Split(";".ToCharArray()));
             }
 
-            bool targetFound = false;
             return recognisedImageExtensions.Any(extension => extension.Equals(targetExtension));
         }
     }

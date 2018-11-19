@@ -5,7 +5,7 @@
  *
  * The code is in a static class, and thus can be called like this:
  * LevenshteinDistance.ComputeDistance(x, y);
- * 
+ *
  * */
 
 using System;

@@ -1,28 +1,28 @@
 ﻿/*
  * BetterDialog.cs (also the designer.cs, and .resx)
- * 
+ *
  * This is a special, custom dialog box to replace the standard message boxes. The
  * benefits are that it has a large header, which looks much nicer on Vista. Is uses
  * special Vista styling. It is carefully tweaked to look good on XP and Vista. Another
  * big plus is that you can specify any icon. 32-pixel icons will look best. Invoke
  * with the static ShowDialog.
- * 
+ *
  * Original code by Samuel Allen. Copyright 2008.
  * Dot Net Perls, http://dotnetperls.com/
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * */
 
 //todo: benchmark, enhance performance
@@ -97,7 +97,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                                 label1.Font,
                                 label1.Width);
 
-                        Height = (int) smallSize.Height + 158;
+                        Height = (int)smallSize.Height + 158;
 
                         // add in a little margin on the top as well
                         pictureBox1.Margin = new Padding
@@ -130,7 +130,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                                 label1.Width);
 
                         // set our height according to the small string
-                        Height = (int) smallSize.Height + 166; // went from 164 to 168 to improve bottom space on XP.
+                        Height = (int)smallSize.Height + 166; // went from 164 to 168 to improve bottom space on XP.
                         // removed 2 pixels for XP
                     }
 
@@ -138,7 +138,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                     double bigger = (smallSize.Width > bigSize.Width)
                                         ? smallSize.Width
                                         : bigSize.Width;
-                    Width = (int) bigger + 100;
+                    Width = (int)bigger + 100;
                 }
                 else
                 {
@@ -154,8 +154,8 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                             label1.Width);
 
                     // set our height
-                    label1.Height = (int) bigSize.Height;
-                    tableLayoutPanel1.Height = (int) bigSize.Height + 58;
+                    label1.Height = (int)bigSize.Height;
+                    tableLayoutPanel1.Height = (int)bigSize.Height + 58;
 
                     // hide the second table, which is used for the small text, but we don't have any.
                     tableLayoutPanel2.Visible = false;
@@ -180,7 +180,7 @@ namespace Re_useable_Classes.Message_Helpers.Forms
                         pictureBox1.Margin.Bottom);
 
                     // modify our width (clean this up a bit) based on text's physical width
-                    Width = (int) bigSize.Width + 100;
+                    Width = (int)bigSize.Width + 100;
                 }
             }
 
